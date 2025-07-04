@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<full-backup-content>
+    <!-- For more information on what is backed up, see https://developer.android.com/guide/topics/data/autobackup
+    This file is ignored on devices with API level 31+ -->
+    <exclude domain="database" path=""/>
+    <exclude domain="sharedpref" path=""/>
+    <exclude domain="file" path=""/>
+    <exclude domain="root" path=""/>
+    <exclude domain="external" path=""/>
+</full-backup-content>
