@@ -51,7 +51,7 @@ android {
 
 dependencies {
     implementation(platform("com.google.firebase:firebase-bom:33.0.0"))
-    implementation("com.google.firebase:firebase-firestore-ktx")
+    // implementation("com.google.firebase:firebase-firestore-ktx") // Removed as Firestore is no longer used for notes
     implementation(platform("androidx.compose:compose-bom:2023.08.00"))
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.ui:ui-graphics")
