@@ -29,13 +29,22 @@ class NoteViewModel(private val repository: NoteRepository) : ViewModel() { // C
 
 
     init {
-        loadNotes() // Initial load of all notes
+        // Set up continuous collection of notes from the repository
+        viewModelScope.launch {
+            repository.getAllNotes()
+                .catch { e ->
+                    _notesState.value = NoteUiState.Error(e.message ?: "Failed to load notes")
+                }
+                .collect { notes ->
+                    _notesState.value = NoteUiState.Success(notes)
+                }
+        }
+        // Initial refresh from network
+        refreshAllNotes()
     }
 
-    fun loadNotes() {
+    private fun loadNotesFromDatabase() {
         viewModelScope.launch {
-            _notesState.value = NoteUiState.Loading
-            repository.refreshNotes() // Refresh from network first
             repository.getAllNotes()
                 .catch { e ->
                     _notesState.value = NoteUiState.Error(e.message ?: "Failed to load notes")
@@ -83,7 +92,7 @@ class NoteViewModel(private val repository: NoteRepository) : ViewModel() { // C
             try {
                 repository.addNote(note)
                 _actionResult.value = NoteUiState.Success(Unit)
-                refreshAllNotes() // Refresh list after adding
+                // No need to refresh - the Flow from repository will automatically update
             } catch (e: Exception) {
                 _actionResult.value = NoteUiState.Error(e.message ?: "Failed to add note")
             }
@@ -96,7 +105,7 @@ class NoteViewModel(private val repository: NoteRepository) : ViewModel() { // C
             try {
                 repository.updateNote(note)
                 _actionResult.value = NoteUiState.Success(Unit)
-                refreshAllNotes() // Refresh list after updating
+                // No need to refresh - the Flow from repository will automatically update
             } catch (e: Exception) {
                 _actionResult.value = NoteUiState.Error(e.message ?: "Failed to update note")
             }
@@ -109,9 +118,36 @@ class NoteViewModel(private val repository: NoteRepository) : ViewModel() { // C
             try {
                 repository.deleteNote(note)
                 _actionResult.value = NoteUiState.Success(Unit)
-                refreshAllNotes() // Refresh list after deleting
+                // No need to refresh - the Flow from repository will automatically update
             } catch (e: Exception) {
                 _actionResult.value = NoteUiState.Error(e.message ?: "Failed to delete note")
+            }
+        }
+    }
+
+    // Manual sync methods for individual notes
+    fun syncNoteToCloud(note: Note) {
+        viewModelScope.launch {
+            _actionResult.value = NoteUiState.Loading
+            try {
+                repository.syncNoteToCloud(note)
+                _actionResult.value = NoteUiState.Success(Unit)
+                // The Flow from repository will automatically update with synced note
+            } catch (e: Exception) {
+                _actionResult.value = NoteUiState.Error(e.message ?: "Failed to sync note to cloud")
+            }
+        }
+    }
+
+    fun syncNoteFromCloud(serverId: Long) {
+        viewModelScope.launch {
+            _actionResult.value = NoteUiState.Loading
+            try {
+                repository.syncNoteFromCloud(serverId)
+                _actionResult.value = NoteUiState.Success(Unit)
+                // The Flow from repository will automatically update with synced note
+            } catch (e: Exception) {
+                _actionResult.value = NoteUiState.Error(e.message ?: "Failed to sync note from cloud")
             }
         }
     }

@@ -1,0 +1,16 @@
+/Users/tea/Documents/simple_note/SimpleNoteApp/app/src/main/java/com/example/simplenoteapp/MainActivity.kt
+/Users/tea/Documents/simple_note/SimpleNoteApp/app/src/main/java/com/example/simplenoteapp/ui/notedetail/NoteDetailScreen.kt
+/Users/tea/Documents/simple_note/SimpleNoteApp/app/src/main/java/com/example/simplenoteapp/ui/auth/AuthScreen.kt
+/Users/tea/Documents/simple_note/SimpleNoteApp/app/src/main/java/com/example/simplenoteapp/ui/theme/Color.kt
+/Users/tea/Documents/simple_note/SimpleNoteApp/app/src/main/java/com/example/simplenoteapp/data/Note.kt
+/Users/tea/Documents/simple_note/SimpleNoteApp/app/src/main/java/com/example/simplenoteapp/data/network/NoteApiService.kt
+/Users/tea/Documents/simple_note/SimpleNoteApp/app/src/main/java/com/example/simplenoteapp/ui/theme/Theme.kt
+/Users/tea/Documents/simple_note/SimpleNoteApp/app/src/main/java/com/example/simplenoteapp/ui/theme/Type.kt
+/Users/tea/Documents/simple_note/SimpleNoteApp/app/src/main/java/com/example/simplenoteapp/ui/notelist/NoteListScreen.kt
+/Users/tea/Documents/simple_note/SimpleNoteApp/app/src/main/java/com/example/simplenoteapp/viewmodel/AuthViewModel.kt
+/Users/tea/Documents/simple_note/SimpleNoteApp/app/src/main/java/com/example/simplenoteapp/NoteApplication.kt
+/Users/tea/Documents/simple_note/SimpleNoteApp/app/src/main/java/com/example/simplenoteapp/data/NoteDao.kt
+/Users/tea/Documents/simple_note/SimpleNoteApp/app/src/main/java/com/example/simplenoteapp/viewmodel/NoteViewModel.kt
+/Users/tea/Documents/simple_note/SimpleNoteApp/app/src/main/java/com/example/simplenoteapp/data/NoteDatabase.kt
+/Users/tea/Documents/simple_note/SimpleNoteApp/app/src/main/java/com/example/simplenoteapp/data/NoteRepository.kt
+/Users/tea/Documents/simple_note/SimpleNoteApp/app/src/main/java/com/example/simplenoteapp/NavGraph.kt

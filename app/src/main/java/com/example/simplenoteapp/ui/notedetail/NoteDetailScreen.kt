@@ -5,6 +5,12 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Done
+import androidx.compose.material.icons.filled.Send
+import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.MoreVert
+import androidx.compose.material.icons.filled.Check
+import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
@@ -32,33 +38,38 @@ fun NoteDetailScreen(
     val coroutineScope = rememberCoroutineScope()
 
     var currentNoteId by remember { mutableStateOf<Long?>(null) }
+    var isNewNote by remember { mutableStateOf(false) }
     var title by remember { mutableStateOf("") }
     var content by remember { mutableStateOf("") }
     var isChecklist by remember { mutableStateOf(false) }
     var checklistItems by remember { mutableStateOf(listOf<String>()) } // Initialized as empty
+    var showSyncMenu by remember { mutableStateOf(false) }
 
     // Parse noteIdString and load note
-    LaunchedEffect(key1 = noteIdString, key2 = viewModel) {
-        currentNoteId = if (noteIdString == "-1" || noteIdString == null) {
+    LaunchedEffect(key1 = noteIdString) {
+        if (noteIdString == "-1" || noteIdString == null) {
+            // New note case
+            isNewNote = true
+            currentNoteId = null
             viewModel.clearSelectedNote() // Clear for new note
-            null
-        } else {
-            noteIdString.toLongOrNull()?.also {
-                viewModel.getNoteById(it)
-            }
-        }
-        // Reset local fields for new note scenario explicitly
-        if (currentNoteId == null) {
+            // Reset local fields for new note scenario explicitly
             title = ""
             content = ""
             isChecklist = false
             checklistItems = listOf("") // Start with one empty item for new checklist
+        } else {
+            // Existing note case
+            isNewNote = false
+            noteIdString.toLongOrNull()?.let { id ->
+                currentNoteId = id
+                viewModel.getNoteById(id)
+            }
         }
     }
 
     // Update local UI state when selectedNoteState changes (e.g., after loading)
     LaunchedEffect(selectedNoteState) {
-        if (selectedNoteState is NoteUiState.Success) {
+        if (selectedNoteState is NoteUiState.Success && !isNewNote) {
             (selectedNoteState as NoteUiState.Success<Note?>).data?.let { note ->
                 title = note.title
                 content = note.content
@@ -73,19 +84,9 @@ fun NoteDetailScreen(
         }
     }
 
-    // Handle action results (save, delete)
+    // Handle action results (save, delete) - only for showing errors, navigation is immediate
     LaunchedEffect(actionResultState) {
         when (val result = actionResultState) {
-            is NoteUiState.Success -> {
-                if (result.data == Unit && (currentNoteId != null || noteIdString == "-1")) { // Check if it's a relevant success
-                    // Only navigate up if an action (add/update/delete) was successful
-                    // For delete or save, navigate up.
-                    // Check if the action was a save (add/update) or delete to decide navigation.
-                    // This logic might need refinement based on specific actions.
-                    // For now, assuming any action success leads to navigateUp.
-                    // onNavigateUp() // This might be too broad, consider specific flags
-                }
-            }
             is NoteUiState.Error -> {
                 coroutineScope.launch {
                     snackbarHostState.showSnackbar(
@@ -94,7 +95,7 @@ fun NoteDetailScreen(
                     )
                 }
             }
-            is NoteUiState.Loading -> { /* Optionally show loading indicator for action */ }
+            else -> { /* No need to handle success or loading here since navigation happens immediately */ }
         }
     }
 
@@ -103,14 +104,53 @@ fun NoteDetailScreen(
         snackbarHost = { SnackbarHost(snackbarHostState) },
         topBar = {
             TopAppBar(
-                title = { Text(if (currentNoteId == null) "New Note" else "Edit Note") },
+                title = { Text(if (isNewNote) "New Note" else "Edit Note") },
                 navigationIcon = {
                     IconButton(onClick = onNavigateUp) {
                         Icon(Icons.Default.ArrowBack, contentDescription = "Back")
                     }
                 },
                 actions = {
-                    if (currentNoteId != null) {
+                    if (!isNewNote && currentNoteId != null) {
+                        // Sync dropdown menu
+                        Box {
+                            IconButton(onClick = { showSyncMenu = true }) {
+                                Icon(Icons.Default.MoreVert, contentDescription = "Sync Options")
+                            }
+                            DropdownMenu(
+                                expanded = showSyncMenu,
+                                onDismissRequest = { showSyncMenu = false }
+                            ) {
+                                DropdownMenuItem(
+                                    text = { Text("Sync to Cloud") },
+                                    onClick = {
+                                        showSyncMenu = false
+                                        (selectedNoteState as? NoteUiState.Success<Note?>)?.data?.let { note ->
+                                            viewModel.syncNoteToCloud(note)
+                                        }
+                                    },
+                                    leadingIcon = {
+                                        Icon(Icons.Default.Send, contentDescription = null)
+                                    }
+                                )
+                                val currentNote = (selectedNoteState as? NoteUiState.Success<Note?>)?.data
+                                if (currentNote?.serverId != null) {
+                                    DropdownMenuItem(
+                                        text = { Text("Sync from Cloud") },
+                                        onClick = {
+                                            showSyncMenu = false
+                                            currentNote.serverId?.let { serverId ->
+                                                viewModel.syncNoteFromCloud(serverId)
+                                            }
+                                        },
+                                        leadingIcon = {
+                                            Icon(Icons.Default.Info, contentDescription = null)
+                                        }
+                                    )
+                                }
+                            }
+                        }
+                        
                         IconButton(onClick = {
                             (selectedNoteState as? NoteUiState.Success<Note?>)?.data?.let { noteToDelete ->
                                 viewModel.deleteNote(noteToDelete)
@@ -126,14 +166,29 @@ fun NoteDetailScreen(
                         } else {
                             content
                         }
-                        val noteToSave = Note(
-                            id = currentNoteId, // Will be null for new notes
-                            title = title.trim(),
-                            content = finalContent.trim(),
-                            isChecklist = isChecklist,
-                            // timestamp, created_at, updated_at will be handled by server/repository
-                        )
-                        if (currentNoteId == null) {
+                        val noteToSave = if (!isNewNote && currentNoteId != null) {
+                            // Editing existing note - mark as needing sync
+                            val currentNote = (selectedNoteState as? NoteUiState.Success<Note?>)?.data
+                            Note(
+                                id = currentNoteId!!,
+                                title = title.trim(),
+                                content = finalContent.trim(),
+                                isChecklist = isChecklist,
+                                serverId = currentNote?.serverId,
+                                isSynced = false,
+                                needsSync = true,
+                                lastSyncTime = currentNote?.lastSyncTime ?: 0L
+                            )
+                        } else {
+                            // New note - will be marked as needing sync automatically
+                            Note(
+                                title = title.trim(),
+                                content = finalContent.trim(),
+                                isChecklist = isChecklist,
+                                needsSync = true
+                            )
+                        }
+                        if (isNewNote) {
                             viewModel.addNote(noteToSave)
                         } else {
                             viewModel.updateNote(noteToSave)
@@ -148,7 +203,7 @@ fun NoteDetailScreen(
     ) { paddingValues ->
         when (val state = selectedNoteState) {
             is NoteUiState.Loading -> {
-                if (currentNoteId != null) { // Only show loading if we are expecting a note
+                if (!isNewNote && currentNoteId != null) { // Only show loading if we are expecting a note
                     Box(modifier = Modifier.fillMaxSize().padding(paddingValues), contentAlignment = Alignment.Center) {
                         CircularProgressIndicator()
                     }
@@ -162,12 +217,14 @@ fun NoteDetailScreen(
                         isChecklist = isChecklist,
                         onIsChecklistChange = { isChecklist = it },
                         checklistItems = checklistItems,
-                        onChecklistItemsChange = { checklistItems = it }
+                        onChecklistItemsChange = { checklistItems = it },
+                        note = null // New note
                     )
                 }
             }
             is NoteUiState.Success -> {
                 // Data is already set to local state vars via LaunchedEffect(selectedNoteState)
+                val currentNote = (state as NoteUiState.Success<Note?>).data
                 NoteEditorContent(
                     modifier = Modifier.padding(paddingValues),
                     title = title,
@@ -177,7 +234,8 @@ fun NoteDetailScreen(
                     isChecklist = isChecklist,
                     onIsChecklistChange = { isChecklist = it },
                     checklistItems = checklistItems,
-                    onChecklistItemsChange = { checklistItems = it }
+                    onChecklistItemsChange = { checklistItems = it },
+                    note = currentNote
                 )
             }
             is NoteUiState.Error -> {
@@ -199,13 +257,20 @@ fun NoteEditorContent(
     isChecklist: Boolean,
     onIsChecklistChange: (Boolean) -> Unit,
     checklistItems: List<String>,
-    onChecklistItemsChange: (List<String>) -> Unit
+    onChecklistItemsChange: (List<String>) -> Unit,
+    note: Note? = null // Current note for sync status
 ) {
     Column(
         modifier = modifier
             .padding(16.dp)
             .fillMaxSize()
     ) {
+        // Sync status indicator
+        note?.let { currentNote ->
+            SyncStatusCard(note = currentNote)
+            Spacer(modifier = Modifier.height(8.dp))
+        }
+        
         OutlinedTextField(
             value = title,
             onValueChange = onTitleChange,
@@ -295,5 +360,78 @@ fun ChecklistItemEditor(
             modifier = Modifier.weight(1f),
             singleLine = true
         )
+    }
+}
+
+@Composable
+fun SyncStatusCard(note: Note) {
+    Card(
+        modifier = Modifier.fillMaxWidth(),
+        colors = CardDefaults.cardColors(
+            containerColor = when {
+                note.needsSync -> MaterialTheme.colorScheme.errorContainer
+                note.isSynced -> MaterialTheme.colorScheme.primaryContainer
+                else -> MaterialTheme.colorScheme.surfaceVariant
+            }
+        )
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(12.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Icon(
+                imageVector = when {
+                    note.needsSync -> Icons.Default.Refresh
+                    note.isSynced -> Icons.Default.Check
+                    else -> Icons.Default.Close
+                },
+                contentDescription = null,
+                tint = when {
+                    note.needsSync -> MaterialTheme.colorScheme.onErrorContainer
+                    note.isSynced -> MaterialTheme.colorScheme.onPrimaryContainer
+                    else -> MaterialTheme.colorScheme.onSurfaceVariant
+                }
+            )
+            Spacer(modifier = Modifier.width(8.dp))
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = when {
+                        note.needsSync -> "Needs Sync"
+                        note.isSynced -> "Synced"
+                        else -> "Not Synced"
+                    },
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = when {
+                        note.needsSync -> MaterialTheme.colorScheme.onErrorContainer
+                        note.isSynced -> MaterialTheme.colorScheme.onPrimaryContainer
+                        else -> MaterialTheme.colorScheme.onSurfaceVariant
+                    }
+                )
+                if (note.lastSyncTime > 0) {
+                    Text(
+                        text = "Last sync: ${java.text.SimpleDateFormat("MMM dd, HH:mm", java.util.Locale.getDefault()).format(java.util.Date(note.lastSyncTime))}",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = when {
+                            note.needsSync -> MaterialTheme.colorScheme.onErrorContainer
+                            note.isSynced -> MaterialTheme.colorScheme.onPrimaryContainer
+                            else -> MaterialTheme.colorScheme.onSurfaceVariant
+                        }
+                    )
+                }
+            }
+            if (note.serverId != null) {
+                Text(
+                    text = "ID: ${note.serverId}",
+                    style = MaterialTheme.typography.bodySmall,
+                    color = when {
+                        note.needsSync -> MaterialTheme.colorScheme.onErrorContainer
+                        note.isSynced -> MaterialTheme.colorScheme.onPrimaryContainer
+                        else -> MaterialTheme.colorScheme.onSurfaceVariant
+                    }
+                )
+            }
+        }
     }
 }

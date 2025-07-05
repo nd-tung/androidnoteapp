@@ -61,9 +61,9 @@ class NoteRepository(
     // 1. Updates it via the API.
     // 2. If successful, upserts the returned note into the local DB.
     suspend fun updateNote(note: Note): Note {
-        if (note.id == null) {
-            Log.e("NoteRepository", "Cannot update note with null ID.")
-            throw NoteRepositoryException("Cannot update note with null ID.")
+        if (note.serverId == null) {
+            Log.e("NoteRepository", "Cannot update note with null server ID.")
+            throw NoteRepositoryException("Cannot update note with null server ID.")
         }
         try {
             val updatedNote = noteApiService.updateNote(note)
@@ -73,7 +73,7 @@ class NoteRepository(
             return updatedNote
         } catch (e: Exception) {
             Log.e("NoteRepository", "Failed to update note: ${e.message}", e)
-            throw NoteRepositoryException("Failed to update note with ID ${note.id}.", e)
+            throw NoteRepositoryException("Failed to update note with server ID ${note.serverId}.", e)
         }
     }
 
@@ -81,18 +81,18 @@ class NoteRepository(
     // 1. Deletes it via the API.
     // 2. If successful, deletes it from the local DB.
     suspend fun deleteNote(note: Note) {
-        if (note.id == null) {
-            Log.e("NoteRepository", "Cannot delete note with null ID.")
-            throw NoteRepositoryException("Cannot delete note with null ID.")
+        if (note.serverId == null) {
+            Log.e("NoteRepository", "Cannot delete note with null server ID.")
+            throw NoteRepositoryException("Cannot delete note with null server ID.")
         }
         try {
-            noteApiService.deleteNote(note.id.toString()) // API service expects String ID
-            Log.d("NoteRepository", "Note deleted via API, ID: ${note.id}")
-            noteDao.deleteNoteById(note.id) // Use deleteNoteById for clarity
-            Log.d("NoteRepository", "Deleted note from local DB, ID: ${note.id}")
+            noteApiService.deleteNote(note.serverId) // Pass serverId to API
+            Log.d("NoteRepository", "Note deleted via API, server ID: ${note.serverId}")
+            noteDao.deleteNoteById(note.id) // Delete by local ID
+            Log.d("NoteRepository", "Deleted note from local DB, local ID: ${note.id}")
         } catch (e: Exception) {
             Log.e("NoteRepository", "Failed to delete note: ${e.message}", e)
-            throw NoteRepositoryException("Failed to delete note with ID ${note.id}.", e)
+            throw NoteRepositoryException("Failed to delete note with server ID ${note.serverId}.", e)
         }
     }
 
@@ -101,5 +101,85 @@ class NoteRepository(
     suspend fun getFreshNoteById(id: Long): Note? {
         refreshNotes() // Or a more targeted refresh for a single item if API supports it
         return noteDao.getNoteById(id).firstOrNull()
+    }
+
+    // Manual sync methods for individual notes
+    suspend fun syncNoteToCloud(note: Note): Note {
+        if (note.serverId == null) {
+            // Note doesn't exist on server, create it
+            return createNoteOnCloud(note)
+        } else {
+            // Note exists on server, update it
+            return updateNoteOnCloud(note)
+        }
+    }
+
+    suspend fun syncNoteFromCloud(serverId: Long): Note? {
+        try {
+            // Use the new single note endpoint for efficiency
+            val cloudNote = noteApiService.getNoteById(serverId)
+            return if (cloudNote != null) {
+                // Update local note with cloud data
+                val syncedNote = cloudNote.copy(
+                    isSynced = true,
+                    needsSync = false,
+                    lastSyncTime = System.currentTimeMillis()
+                )
+                noteDao.upsertNote(syncedNote)
+                Log.d("NoteRepository", "Note synced from cloud: $syncedNote")
+                syncedNote
+            } else {
+                Log.w("NoteRepository", "Note not found in cloud with server ID: $serverId")
+                null
+            }
+        } catch (e: Exception) {
+            Log.e("NoteRepository", "Failed to sync note from cloud: ${e.message}", e)
+            throw NoteRepositoryException("Failed to sync note from cloud.", e)
+        }
+    }
+
+    private suspend fun createNoteOnCloud(note: Note): Note {
+        try {
+            val createdNote = noteApiService.createNote(note)
+            val syncedNote = createdNote.copy(
+                id = note.id, // Keep local ID
+                isSynced = true,
+                needsSync = false,
+                lastSyncTime = System.currentTimeMillis()
+            )
+            noteDao.upsertNote(syncedNote)
+            Log.d("NoteRepository", "Note synced to cloud: $syncedNote")
+            return syncedNote
+        } catch (e: Exception) {
+            // Mark note as needing sync
+            val needsSyncNote = note.copy(needsSync = true, isSynced = false)
+            noteDao.upsertNote(needsSyncNote)
+            Log.e("NoteRepository", "Failed to sync note to cloud: ${e.message}", e)
+            throw NoteRepositoryException("Failed to sync note to cloud.", e)
+        }
+    }
+
+    private suspend fun updateNoteOnCloud(note: Note): Note {
+        if (note.serverId == null) {
+            throw NoteRepositoryException("Cannot update note with null server ID.")
+        }
+        try {
+            val updatedNote = noteApiService.updateNote(note)
+            val syncedNote = updatedNote.copy(
+                id = note.id, // Keep local ID
+                isSynced = true,
+                needsSync = false,
+                lastSyncTime = System.currentTimeMillis()
+            )
+            noteDao.upsertNote(syncedNote)
+            Log.d("NoteRepository", "Note updated on cloud: $syncedNote")
+            return syncedNote
+        } catch (e: Exception) {
+            // Mark note as needing sync
+            val needsSyncNote = note.copy(needsSync = true, isSynced = false)
+            noteDao.upsertNote(needsSyncNote)
+            Log.e("NoteRepository", "Failed to update note on cloud: ${e.message}", e)
+            throw NoteRepositoryException("Failed to update note on cloud.", e)
+        }
     }
 }

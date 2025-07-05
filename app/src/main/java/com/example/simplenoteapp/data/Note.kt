@@ -4,15 +4,46 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.serialization.Serializable
 
-@Serializable // Added for Ktor JSON serialization
+// Room Entity (for local database)
 @Entity(tableName = "notes")
 data class Note(
-    @PrimaryKey // Removed autoGenerate = true, ID will come from server or be null
-    val id: Long? = null, // Changed from String? to Long? to match backend ID type
+    @PrimaryKey(autoGenerate = true)
+    val id: Long = 0,
     val title: String = "",
     val content: String = "",
-    val isChecklist: Boolean = false, // Local-only field
-    val timestamp: Long = System.currentTimeMillis(), // Local timestamp, might be superseded by server timestamps
-    val created_at: String? = null, // Field from backend
-    val updated_at: String? = null  // Field from backend
+    val isChecklist: Boolean = false,
+    val timestamp: Long = System.currentTimeMillis(),
+    val serverId: Long? = null, // Server ID from backend
+    val isSynced: Boolean = false, // Whether this note is synced with cloud
+    val needsSync: Boolean = false, // Whether this note has local changes that need syncing
+    val lastSyncTime: Long = 0L // When this note was last synced
+)
+
+// Network Model (for API communication)
+@Serializable
+data class NoteDto(
+    val id: Long? = null,
+    val title: String = "",
+    val content: String = "",
+    val isChecklist: Boolean = false, // Added to match backend
+    val created_at: String? = null,
+    val updated_at: String? = null
+)
+
+// Extension functions for conversion
+fun Note.toDto(): NoteDto = NoteDto(
+    id = serverId,
+    title = title,
+    content = content,
+    isChecklist = isChecklist
+)
+
+fun NoteDto.toEntity(): Note = Note(
+    title = title,
+    content = content,
+    isChecklist = isChecklist,
+    serverId = id,
+    isSynced = true, // Coming from server means it's synced
+    needsSync = false,
+    lastSyncTime = System.currentTimeMillis()
 )

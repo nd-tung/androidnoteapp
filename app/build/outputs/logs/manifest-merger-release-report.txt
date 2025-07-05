@@ -24,22 +24,19 @@ MERGED from [androidx.compose.ui:ui-text-android:1.5.1] /Users/tea/.gradle/cache
 MERGED from [androidx.compose.ui:ui-graphics-android:1.5.1] /Users/tea/.gradle/caches/8.14.2/transforms/c899567760287b05979f06f951b7a0f4/transformed/jetified-ui-graphics-release/AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.firebase:firebase-auth-ktx:23.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/8c9c627ea082db547ce1fbce2e0dbb98/transformed/jetified-firebase-auth-ktx-23.0.0/AndroidManifest.xml:2:1-17:12
 MERGED from [com.google.firebase:firebase-auth:23.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/3e52dea6a27465b656c5ce7f5cd83355/transformed/jetified-firebase-auth-23.0.0/AndroidManifest.xml:17:1-75:12
-MERGED from [com.google.firebase:firebase-firestore-ktx:25.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/57849135c07e275499c2d6d4e76faefd/transformed/jetified-firebase-firestore-ktx-25.0.0/AndroidManifest.xml:2:1-18:12
-MERGED from [com.google.firebase:firebase-firestore:25.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/41b3212c84f99509558aaab93f367905/transformed/jetified-firebase-firestore-25.0.0/AndroidManifest.xml:2:1-26:12
-MERGED from [com.google.firebase:firebase-appcheck-interop:17.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/5490bb492e06cc2c89ebbecf3167f2b7/transformed/jetified-firebase-appcheck-interop-17.0.0/AndroidManifest.xml:15:1-25:12
-MERGED from [com.google.firebase:firebase-database-collection:18.0.1] /Users/tea/.gradle/caches/8.14.2/transforms/3d3949af14aedf50df1f3609f570c1a0/transformed/jetified-firebase-database-collection-18.0.1/AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.firebase:firebase-common-ktx:21.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/3b88edb1d16091a59b888799759cd109/transformed/jetified-firebase-common-ktx-21.0.0/AndroidManifest.xml:2:1-18:12
+MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/e5024f913f9c20a3d9aa3bc33021f09b/transformed/jetified-firebase-auth-interop-20.0.0/AndroidManifest.xml:2:1-10:12
+MERGED from [com.google.firebase:firebase-common:21.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/0f29927be24ba1c25e72ec65c5ed9bf3/transformed/jetified-firebase-common-21.0.0/AndroidManifest.xml:15:1-41:12
 MERGED from [androidx.credentials:credentials:1.2.0-rc01] /Users/tea/.gradle/caches/8.14.2/transforms/5c484db7f7385c31014b786dfcf8ec12/transformed/jetified-credentials-1.2.0-rc01/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/tea/.gradle/caches/8.14.2/transforms/b374817cf4ac3790bf8f9e090b424dc5/transformed/jetified-credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:17:1-44:12
 MERGED from [com.google.android.gms:play-services-auth:20.7.0] /Users/tea/.gradle/caches/8.14.2/transforms/e8793065d2ce35aa0da3862db3afa8b1/transformed/jetified-play-services-auth-20.7.0/AndroidManifest.xml:17:1-40:12
 MERGED from [com.google.android.gms:play-services-auth-api-phone:18.0.2] /Users/tea/.gradle/caches/8.14.2/transforms/8a88f31536e3bed792da1e646f990986/transformed/jetified-play-services-auth-api-phone-18.0.2/AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.android.recaptcha:recaptcha:18.4.0] /Users/tea/.gradle/caches/8.14.2/transforms/3ef3fd2bbfa1f25d4dd8a244839536ed/transformed/jetified-recaptcha-18.4.0/AndroidManifest.xml:2:1-11:12
+MERGED from [com.google.android.play:integrity:1.2.0] /Users/tea/.gradle/caches/8.14.2/transforms/83fadc71d2a7ffbcae4469074a7ced60/transformed/jetified-integrity-1.2.0/AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.firebase:firebase-appcheck-interop:17.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/5490bb492e06cc2c89ebbecf3167f2b7/transformed/jetified-firebase-appcheck-interop-17.0.0/AndroidManifest.xml:15:1-25:12
 MERGED from [com.google.android.gms:play-services-fido:20.1.0] /Users/tea/.gradle/caches/8.14.2/transforms/10f8f187980d60497575ca58e523abab/transformed/jetified-play-services-fido-20.1.0/AndroidManifest.xml:2:1-10:12
 MERGED from [com.google.android.gms:play-services-auth-base:18.0.4] /Users/tea/.gradle/caches/8.14.2/transforms/e8ff28580b18f478665441e2ead54626/transformed/jetified-play-services-auth-base-18.0.4/AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.android.gms:play-services-base:18.0.1] /Users/tea/.gradle/caches/8.14.2/transforms/f862aa19ad44b192d19a93b635a820a8/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:16:1-24:12
-MERGED from [com.google.firebase:firebase-common-ktx:21.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/3b88edb1d16091a59b888799759cd109/transformed/jetified-firebase-common-ktx-21.0.0/AndroidManifest.xml:2:1-18:12
-MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/e5024f913f9c20a3d9aa3bc33021f09b/transformed/jetified-firebase-auth-interop-20.0.0/AndroidManifest.xml:2:1-10:12
-MERGED from [com.google.firebase:firebase-common:21.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/0f29927be24ba1c25e72ec65c5ed9bf3/transformed/jetified-firebase-common-21.0.0/AndroidManifest.xml:15:1-41:12
-MERGED from [com.google.android.recaptcha:recaptcha:18.4.0] /Users/tea/.gradle/caches/8.14.2/transforms/3ef3fd2bbfa1f25d4dd8a244839536ed/transformed/jetified-recaptcha-18.4.0/AndroidManifest.xml:2:1-11:12
-MERGED from [com.google.android.play:integrity:1.2.0] /Users/tea/.gradle/caches/8.14.2/transforms/83fadc71d2a7ffbcae4469074a7ced60/transformed/jetified-integrity-1.2.0/AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.room:room-runtime:2.6.1] /Users/tea/.gradle/caches/8.14.2/transforms/32b32b6f3b84bedecc246a3477428e10/transformed/room-runtime-2.6.1/AndroidManifest.xml:17:1-31:12
 MERGED from [androidx.room:room-ktx:2.6.1] /Users/tea/.gradle/caches/8.14.2/transforms/b373aea20588bad21e399483fbec2886/transformed/jetified-room-ktx-2.6.1/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.compose.runtime:runtime-saveable-android:1.5.1] /Users/tea/.gradle/caches/8.14.2/transforms/0251f385f3300e1cf49c92457a824799/transformed/jetified-runtime-saveable-release/AndroidManifest.xml:2:1-7:12
@@ -84,8 +81,6 @@ MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/tea/.gradle/caches/8
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/tea/.gradle/caches/8.14.2/transforms/e7e568407bd162ddd69b3ce68e208f81/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:17:1-27:12
 MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/368404ec335d4af4a392c3fb85633d92/transformed/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.tracing:tracing:1.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/c929a9a0882d9251ef4e5f689f917e6f/transformed/jetified-tracing-1.0.0/AndroidManifest.xml:17:1-24:12
-MERGED from [io.grpc:grpc-android:1.57.2] /Users/tea/.gradle/caches/8.14.2/transforms/9c557d22457822835ef95988b38be1f6/transformed/jetified-grpc-android-1.57.2/AndroidManifest.xml:2:1-9:12
-MERGED from [com.google.firebase:protolite-well-known-types:18.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/c1a619326dc3897427040664dab8fe42/transformed/jetified-protolite-well-known-types-18.0.0/AndroidManifest.xml:2:1-11:12
 	package
 		INJECTED from /Users/tea/Documents/simple_note/SimpleNoteApp/app/src/main/AndroidManifest.xml
 	android:versionName
@@ -103,28 +98,24 @@ MERGED from [com.google.firebase:firebase-auth-ktx:23.0.0] /Users/tea/.gradle/ca
 MERGED from [com.google.firebase:firebase-auth-ktx:23.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/8c9c627ea082db547ce1fbce2e0dbb98/transformed/jetified-firebase-auth-ktx-23.0.0/AndroidManifest.xml:7:5-15:19
 MERGED from [com.google.firebase:firebase-auth:23.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/3e52dea6a27465b656c5ce7f5cd83355/transformed/jetified-firebase-auth-23.0.0/AndroidManifest.xml:28:5-73:19
 MERGED from [com.google.firebase:firebase-auth:23.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/3e52dea6a27465b656c5ce7f5cd83355/transformed/jetified-firebase-auth-23.0.0/AndroidManifest.xml:28:5-73:19
-MERGED from [com.google.firebase:firebase-firestore-ktx:25.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/57849135c07e275499c2d6d4e76faefd/transformed/jetified-firebase-firestore-ktx-25.0.0/AndroidManifest.xml:8:5-16:19
-MERGED from [com.google.firebase:firebase-firestore-ktx:25.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/57849135c07e275499c2d6d4e76faefd/transformed/jetified-firebase-firestore-ktx-25.0.0/AndroidManifest.xml:8:5-16:19
-MERGED from [com.google.firebase:firebase-firestore:25.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/41b3212c84f99509558aaab93f367905/transformed/jetified-firebase-firestore-25.0.0/AndroidManifest.xml:13:5-24:19
-MERGED from [com.google.firebase:firebase-firestore:25.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/41b3212c84f99509558aaab93f367905/transformed/jetified-firebase-firestore-25.0.0/AndroidManifest.xml:13:5-24:19
-MERGED from [com.google.firebase:firebase-appcheck-interop:17.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/5490bb492e06cc2c89ebbecf3167f2b7/transformed/jetified-firebase-appcheck-interop-17.0.0/AndroidManifest.xml:23:5-20
-MERGED from [com.google.firebase:firebase-appcheck-interop:17.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/5490bb492e06cc2c89ebbecf3167f2b7/transformed/jetified-firebase-appcheck-interop-17.0.0/AndroidManifest.xml:23:5-20
-MERGED from [androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/tea/.gradle/caches/8.14.2/transforms/b374817cf4ac3790bf8f9e090b424dc5/transformed/jetified-credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:23:5-42:19
-MERGED from [androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/tea/.gradle/caches/8.14.2/transforms/b374817cf4ac3790bf8f9e090b424dc5/transformed/jetified-credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:23:5-42:19
-MERGED from [com.google.android.gms:play-services-auth:20.7.0] /Users/tea/.gradle/caches/8.14.2/transforms/e8793065d2ce35aa0da3862db3afa8b1/transformed/jetified-play-services-auth-20.7.0/AndroidManifest.xml:22:5-38:19
-MERGED from [com.google.android.gms:play-services-auth:20.7.0] /Users/tea/.gradle/caches/8.14.2/transforms/e8793065d2ce35aa0da3862db3afa8b1/transformed/jetified-play-services-auth-20.7.0/AndroidManifest.xml:22:5-38:19
-MERGED from [com.google.android.gms:play-services-fido:20.1.0] /Users/tea/.gradle/caches/8.14.2/transforms/10f8f187980d60497575ca58e523abab/transformed/jetified-play-services-fido-20.1.0/AndroidManifest.xml:7:5-8:19
-MERGED from [com.google.android.gms:play-services-fido:20.1.0] /Users/tea/.gradle/caches/8.14.2/transforms/10f8f187980d60497575ca58e523abab/transformed/jetified-play-services-fido-20.1.0/AndroidManifest.xml:7:5-8:19
-MERGED from [com.google.android.gms:play-services-base:18.0.1] /Users/tea/.gradle/caches/8.14.2/transforms/f862aa19ad44b192d19a93b635a820a8/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:19:5-23:19
-MERGED from [com.google.android.gms:play-services-base:18.0.1] /Users/tea/.gradle/caches/8.14.2/transforms/f862aa19ad44b192d19a93b635a820a8/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:19:5-23:19
 MERGED from [com.google.firebase:firebase-common-ktx:21.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/3b88edb1d16091a59b888799759cd109/transformed/jetified-firebase-common-ktx-21.0.0/AndroidManifest.xml:8:5-16:19
 MERGED from [com.google.firebase:firebase-common-ktx:21.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/3b88edb1d16091a59b888799759cd109/transformed/jetified-firebase-common-ktx-21.0.0/AndroidManifest.xml:8:5-16:19
 MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/e5024f913f9c20a3d9aa3bc33021f09b/transformed/jetified-firebase-auth-interop-20.0.0/AndroidManifest.xml:7:5-8:19
 MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/e5024f913f9c20a3d9aa3bc33021f09b/transformed/jetified-firebase-auth-interop-20.0.0/AndroidManifest.xml:7:5-8:19
 MERGED from [com.google.firebase:firebase-common:21.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/0f29927be24ba1c25e72ec65c5ed9bf3/transformed/jetified-firebase-common-21.0.0/AndroidManifest.xml:22:5-39:19
 MERGED from [com.google.firebase:firebase-common:21.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/0f29927be24ba1c25e72ec65c5ed9bf3/transformed/jetified-firebase-common-21.0.0/AndroidManifest.xml:22:5-39:19
+MERGED from [androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/tea/.gradle/caches/8.14.2/transforms/b374817cf4ac3790bf8f9e090b424dc5/transformed/jetified-credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:23:5-42:19
+MERGED from [androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/tea/.gradle/caches/8.14.2/transforms/b374817cf4ac3790bf8f9e090b424dc5/transformed/jetified-credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:23:5-42:19
+MERGED from [com.google.android.gms:play-services-auth:20.7.0] /Users/tea/.gradle/caches/8.14.2/transforms/e8793065d2ce35aa0da3862db3afa8b1/transformed/jetified-play-services-auth-20.7.0/AndroidManifest.xml:22:5-38:19
+MERGED from [com.google.android.gms:play-services-auth:20.7.0] /Users/tea/.gradle/caches/8.14.2/transforms/e8793065d2ce35aa0da3862db3afa8b1/transformed/jetified-play-services-auth-20.7.0/AndroidManifest.xml:22:5-38:19
 MERGED from [com.google.android.play:integrity:1.2.0] /Users/tea/.gradle/caches/8.14.2/transforms/83fadc71d2a7ffbcae4469074a7ced60/transformed/jetified-integrity-1.2.0/AndroidManifest.xml:5:5-6:19
 MERGED from [com.google.android.play:integrity:1.2.0] /Users/tea/.gradle/caches/8.14.2/transforms/83fadc71d2a7ffbcae4469074a7ced60/transformed/jetified-integrity-1.2.0/AndroidManifest.xml:5:5-6:19
+MERGED from [com.google.firebase:firebase-appcheck-interop:17.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/5490bb492e06cc2c89ebbecf3167f2b7/transformed/jetified-firebase-appcheck-interop-17.0.0/AndroidManifest.xml:23:5-20
+MERGED from [com.google.firebase:firebase-appcheck-interop:17.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/5490bb492e06cc2c89ebbecf3167f2b7/transformed/jetified-firebase-appcheck-interop-17.0.0/AndroidManifest.xml:23:5-20
+MERGED from [com.google.android.gms:play-services-fido:20.1.0] /Users/tea/.gradle/caches/8.14.2/transforms/10f8f187980d60497575ca58e523abab/transformed/jetified-play-services-fido-20.1.0/AndroidManifest.xml:7:5-8:19
+MERGED from [com.google.android.gms:play-services-fido:20.1.0] /Users/tea/.gradle/caches/8.14.2/transforms/10f8f187980d60497575ca58e523abab/transformed/jetified-play-services-fido-20.1.0/AndroidManifest.xml:7:5-8:19
+MERGED from [com.google.android.gms:play-services-base:18.0.1] /Users/tea/.gradle/caches/8.14.2/transforms/f862aa19ad44b192d19a93b635a820a8/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:19:5-23:19
+MERGED from [com.google.android.gms:play-services-base:18.0.1] /Users/tea/.gradle/caches/8.14.2/transforms/f862aa19ad44b192d19a93b635a820a8/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:19:5-23:19
 MERGED from [androidx.room:room-runtime:2.6.1] /Users/tea/.gradle/caches/8.14.2/transforms/32b32b6f3b84bedecc246a3477428e10/transformed/room-runtime-2.6.1/AndroidManifest.xml:23:5-29:19
 MERGED from [androidx.room:room-runtime:2.6.1] /Users/tea/.gradle/caches/8.14.2/transforms/32b32b6f3b84bedecc246a3477428e10/transformed/room-runtime-2.6.1/AndroidManifest.xml:23:5-29:19
 MERGED from [androidx.emoji2:emoji2:1.4.0] /Users/tea/.gradle/caches/8.14.2/transforms/04d5fffef7c644e7cc21ae3d956b11f5/transformed/jetified-emoji2-1.4.0/AndroidManifest.xml:23:5-33:19
@@ -231,14 +222,12 @@ MERGED from [com.google.firebase:firebase-auth-ktx:23.0.0] /Users/tea/.gradle/ca
 MERGED from [com.google.firebase:firebase-auth-ktx:23.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/8c9c627ea082db547ce1fbce2e0dbb98/transformed/jetified-firebase-auth-ktx-23.0.0/AndroidManifest.xml:5:5-44
 MERGED from [com.google.firebase:firebase-auth:23.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/3e52dea6a27465b656c5ce7f5cd83355/transformed/jetified-firebase-auth-23.0.0/AndroidManifest.xml:21:5-23:151
 MERGED from [com.google.firebase:firebase-auth:23.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/3e52dea6a27465b656c5ce7f5cd83355/transformed/jetified-firebase-auth-23.0.0/AndroidManifest.xml:21:5-23:151
-MERGED from [com.google.firebase:firebase-firestore-ktx:25.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/57849135c07e275499c2d6d4e76faefd/transformed/jetified-firebase-firestore-ktx-25.0.0/AndroidManifest.xml:5:5-44
-MERGED from [com.google.firebase:firebase-firestore-ktx:25.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/57849135c07e275499c2d6d4e76faefd/transformed/jetified-firebase-firestore-ktx-25.0.0/AndroidManifest.xml:5:5-44
-MERGED from [com.google.firebase:firebase-firestore:25.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/41b3212c84f99509558aaab93f367905/transformed/jetified-firebase-firestore-25.0.0/AndroidManifest.xml:6:5-44
-MERGED from [com.google.firebase:firebase-firestore:25.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/41b3212c84f99509558aaab93f367905/transformed/jetified-firebase-firestore-25.0.0/AndroidManifest.xml:6:5-44
-MERGED from [com.google.firebase:firebase-appcheck-interop:17.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/5490bb492e06cc2c89ebbecf3167f2b7/transformed/jetified-firebase-appcheck-interop-17.0.0/AndroidManifest.xml:18:5-20:41
-MERGED from [com.google.firebase:firebase-appcheck-interop:17.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/5490bb492e06cc2c89ebbecf3167f2b7/transformed/jetified-firebase-appcheck-interop-17.0.0/AndroidManifest.xml:18:5-20:41
-MERGED from [com.google.firebase:firebase-database-collection:18.0.1] /Users/tea/.gradle/caches/8.14.2/transforms/3d3949af14aedf50df1f3609f570c1a0/transformed/jetified-firebase-database-collection-18.0.1/AndroidManifest.xml:5:5-7:41
-MERGED from [com.google.firebase:firebase-database-collection:18.0.1] /Users/tea/.gradle/caches/8.14.2/transforms/3d3949af14aedf50df1f3609f570c1a0/transformed/jetified-firebase-database-collection-18.0.1/AndroidManifest.xml:5:5-7:41
+MERGED from [com.google.firebase:firebase-common-ktx:21.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/3b88edb1d16091a59b888799759cd109/transformed/jetified-firebase-common-ktx-21.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-common-ktx:21.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/3b88edb1d16091a59b888799759cd109/transformed/jetified-firebase-common-ktx-21.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/e5024f913f9c20a3d9aa3bc33021f09b/transformed/jetified-firebase-auth-interop-20.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/e5024f913f9c20a3d9aa3bc33021f09b/transformed/jetified-firebase-auth-interop-20.0.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-common:21.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/0f29927be24ba1c25e72ec65c5ed9bf3/transformed/jetified-firebase-common-21.0.0/AndroidManifest.xml:19:5-44
+MERGED from [com.google.firebase:firebase-common:21.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/0f29927be24ba1c25e72ec65c5ed9bf3/transformed/jetified-firebase-common-21.0.0/AndroidManifest.xml:19:5-44
 MERGED from [androidx.credentials:credentials:1.2.0-rc01] /Users/tea/.gradle/caches/8.14.2/transforms/5c484db7f7385c31014b786dfcf8ec12/transformed/jetified-credentials-1.2.0-rc01/AndroidManifest.xml:5:5-44
 MERGED from [androidx.credentials:credentials:1.2.0-rc01] /Users/tea/.gradle/caches/8.14.2/transforms/5c484db7f7385c31014b786dfcf8ec12/transformed/jetified-credentials-1.2.0-rc01/AndroidManifest.xml:5:5-44
 MERGED from [androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/tea/.gradle/caches/8.14.2/transforms/b374817cf4ac3790bf8f9e090b424dc5/transformed/jetified-credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:21:5-44
@@ -247,22 +236,18 @@ MERGED from [com.google.android.gms:play-services-auth:20.7.0] /Users/tea/.gradl
 MERGED from [com.google.android.gms:play-services-auth:20.7.0] /Users/tea/.gradle/caches/8.14.2/transforms/e8793065d2ce35aa0da3862db3afa8b1/transformed/jetified-play-services-auth-20.7.0/AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-auth-api-phone:18.0.2] /Users/tea/.gradle/caches/8.14.2/transforms/8a88f31536e3bed792da1e646f990986/transformed/jetified-play-services-auth-api-phone-18.0.2/AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-auth-api-phone:18.0.2] /Users/tea/.gradle/caches/8.14.2/transforms/8a88f31536e3bed792da1e646f990986/transformed/jetified-play-services-auth-api-phone-18.0.2/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.recaptcha:recaptcha:18.4.0] /Users/tea/.gradle/caches/8.14.2/transforms/3ef3fd2bbfa1f25d4dd8a244839536ed/transformed/jetified-recaptcha-18.4.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.recaptcha:recaptcha:18.4.0] /Users/tea/.gradle/caches/8.14.2/transforms/3ef3fd2bbfa1f25d4dd8a244839536ed/transformed/jetified-recaptcha-18.4.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.play:integrity:1.2.0] /Users/tea/.gradle/caches/8.14.2/transforms/83fadc71d2a7ffbcae4469074a7ced60/transformed/jetified-integrity-1.2.0/AndroidManifest.xml:4:5-44
+MERGED from [com.google.android.play:integrity:1.2.0] /Users/tea/.gradle/caches/8.14.2/transforms/83fadc71d2a7ffbcae4469074a7ced60/transformed/jetified-integrity-1.2.0/AndroidManifest.xml:4:5-44
+MERGED from [com.google.firebase:firebase-appcheck-interop:17.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/5490bb492e06cc2c89ebbecf3167f2b7/transformed/jetified-firebase-appcheck-interop-17.0.0/AndroidManifest.xml:18:5-20:41
+MERGED from [com.google.firebase:firebase-appcheck-interop:17.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/5490bb492e06cc2c89ebbecf3167f2b7/transformed/jetified-firebase-appcheck-interop-17.0.0/AndroidManifest.xml:18:5-20:41
 MERGED from [com.google.android.gms:play-services-fido:20.1.0] /Users/tea/.gradle/caches/8.14.2/transforms/10f8f187980d60497575ca58e523abab/transformed/jetified-play-services-fido-20.1.0/AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-fido:20.1.0] /Users/tea/.gradle/caches/8.14.2/transforms/10f8f187980d60497575ca58e523abab/transformed/jetified-play-services-fido-20.1.0/AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-auth-base:18.0.4] /Users/tea/.gradle/caches/8.14.2/transforms/e8ff28580b18f478665441e2ead54626/transformed/jetified-play-services-auth-base-18.0.4/AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-auth-base:18.0.4] /Users/tea/.gradle/caches/8.14.2/transforms/e8ff28580b18f478665441e2ead54626/transformed/jetified-play-services-auth-base-18.0.4/AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-base:18.0.1] /Users/tea/.gradle/caches/8.14.2/transforms/f862aa19ad44b192d19a93b635a820a8/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:18:5-43
 MERGED from [com.google.android.gms:play-services-base:18.0.1] /Users/tea/.gradle/caches/8.14.2/transforms/f862aa19ad44b192d19a93b635a820a8/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:18:5-43
-MERGED from [com.google.firebase:firebase-common-ktx:21.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/3b88edb1d16091a59b888799759cd109/transformed/jetified-firebase-common-ktx-21.0.0/AndroidManifest.xml:5:5-44
-MERGED from [com.google.firebase:firebase-common-ktx:21.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/3b88edb1d16091a59b888799759cd109/transformed/jetified-firebase-common-ktx-21.0.0/AndroidManifest.xml:5:5-44
-MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/e5024f913f9c20a3d9aa3bc33021f09b/transformed/jetified-firebase-auth-interop-20.0.0/AndroidManifest.xml:5:5-44
-MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/e5024f913f9c20a3d9aa3bc33021f09b/transformed/jetified-firebase-auth-interop-20.0.0/AndroidManifest.xml:5:5-44
-MERGED from [com.google.firebase:firebase-common:21.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/0f29927be24ba1c25e72ec65c5ed9bf3/transformed/jetified-firebase-common-21.0.0/AndroidManifest.xml:19:5-44
-MERGED from [com.google.firebase:firebase-common:21.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/0f29927be24ba1c25e72ec65c5ed9bf3/transformed/jetified-firebase-common-21.0.0/AndroidManifest.xml:19:5-44
-MERGED from [com.google.android.recaptcha:recaptcha:18.4.0] /Users/tea/.gradle/caches/8.14.2/transforms/3ef3fd2bbfa1f25d4dd8a244839536ed/transformed/jetified-recaptcha-18.4.0/AndroidManifest.xml:5:5-44
-MERGED from [com.google.android.recaptcha:recaptcha:18.4.0] /Users/tea/.gradle/caches/8.14.2/transforms/3ef3fd2bbfa1f25d4dd8a244839536ed/transformed/jetified-recaptcha-18.4.0/AndroidManifest.xml:5:5-44
-MERGED from [com.google.android.play:integrity:1.2.0] /Users/tea/.gradle/caches/8.14.2/transforms/83fadc71d2a7ffbcae4469074a7ced60/transformed/jetified-integrity-1.2.0/AndroidManifest.xml:4:5-44
-MERGED from [com.google.android.play:integrity:1.2.0] /Users/tea/.gradle/caches/8.14.2/transforms/83fadc71d2a7ffbcae4469074a7ced60/transformed/jetified-integrity-1.2.0/AndroidManifest.xml:4:5-44
 MERGED from [androidx.room:room-runtime:2.6.1] /Users/tea/.gradle/caches/8.14.2/transforms/32b32b6f3b84bedecc246a3477428e10/transformed/room-runtime-2.6.1/AndroidManifest.xml:21:5-44
 MERGED from [androidx.room:room-runtime:2.6.1] /Users/tea/.gradle/caches/8.14.2/transforms/32b32b6f3b84bedecc246a3477428e10/transformed/room-runtime-2.6.1/AndroidManifest.xml:21:5-44
 MERGED from [androidx.room:room-ktx:2.6.1] /Users/tea/.gradle/caches/8.14.2/transforms/b373aea20588bad21e399483fbec2886/transformed/jetified-room-ktx-2.6.1/AndroidManifest.xml:20:5-44
@@ -351,10 +336,6 @@ MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/tea/.gradle/caches
 MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/368404ec335d4af4a392c3fb85633d92/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.tracing:tracing:1.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/c929a9a0882d9251ef4e5f689f917e6f/transformed/jetified-tracing-1.0.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.tracing:tracing:1.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/c929a9a0882d9251ef4e5f689f917e6f/transformed/jetified-tracing-1.0.0/AndroidManifest.xml:20:5-22:41
-MERGED from [io.grpc:grpc-android:1.57.2] /Users/tea/.gradle/caches/8.14.2/transforms/9c557d22457822835ef95988b38be1f6/transformed/jetified-grpc-android-1.57.2/AndroidManifest.xml:5:5-44
-MERGED from [io.grpc:grpc-android:1.57.2] /Users/tea/.gradle/caches/8.14.2/transforms/9c557d22457822835ef95988b38be1f6/transformed/jetified-grpc-android-1.57.2/AndroidManifest.xml:5:5-44
-MERGED from [com.google.firebase:protolite-well-known-types:18.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/c1a619326dc3897427040664dab8fe42/transformed/jetified-protolite-well-known-types-18.0.0/AndroidManifest.xml:7:5-9:41
-MERGED from [com.google.firebase:protolite-well-known-types:18.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/c1a619326dc3897427040664dab8fe42/transformed/jetified-protolite-well-known-types-18.0.0/AndroidManifest.xml:7:5-9:41
 	tools:overrideLibrary
 		ADDED from [com.google.firebase:firebase-auth:23.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/3e52dea6a27465b656c5ce7f5cd83355/transformed/jetified-firebase-auth-23.0.0/AndroidManifest.xml:23:9-148
 	android:targetSdkVersion
@@ -365,10 +346,6 @@ service#com.google.firebase.components.ComponentDiscoveryService
 ADDED from [com.google.firebase:firebase-auth-ktx:23.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/8c9c627ea082db547ce1fbce2e0dbb98/transformed/jetified-firebase-auth-ktx-23.0.0/AndroidManifest.xml:8:9-14:19
 MERGED from [com.google.firebase:firebase-auth:23.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/3e52dea6a27465b656c5ce7f5cd83355/transformed/jetified-firebase-auth-23.0.0/AndroidManifest.xml:66:9-72:19
 MERGED from [com.google.firebase:firebase-auth:23.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/3e52dea6a27465b656c5ce7f5cd83355/transformed/jetified-firebase-auth-23.0.0/AndroidManifest.xml:66:9-72:19
-MERGED from [com.google.firebase:firebase-firestore-ktx:25.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/57849135c07e275499c2d6d4e76faefd/transformed/jetified-firebase-firestore-ktx-25.0.0/AndroidManifest.xml:9:9-15:19
-MERGED from [com.google.firebase:firebase-firestore-ktx:25.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/57849135c07e275499c2d6d4e76faefd/transformed/jetified-firebase-firestore-ktx-25.0.0/AndroidManifest.xml:9:9-15:19
-MERGED from [com.google.firebase:firebase-firestore:25.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/41b3212c84f99509558aaab93f367905/transformed/jetified-firebase-firestore-25.0.0/AndroidManifest.xml:14:9-23:19
-MERGED from [com.google.firebase:firebase-firestore:25.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/41b3212c84f99509558aaab93f367905/transformed/jetified-firebase-firestore-25.0.0/AndroidManifest.xml:14:9-23:19
 MERGED from [com.google.firebase:firebase-common-ktx:21.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/3b88edb1d16091a59b888799759cd109/transformed/jetified-firebase-common-ktx-21.0.0/AndroidManifest.xml:9:9-15:19
 MERGED from [com.google.firebase:firebase-common-ktx:21.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/3b88edb1d16091a59b888799759cd109/transformed/jetified-firebase-common-ktx-21.0.0/AndroidManifest.xml:9:9-15:19
 MERGED from [com.google.firebase:firebase-common:21.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/0f29927be24ba1c25e72ec65c5ed9bf3/transformed/jetified-firebase-common-21.0.0/AndroidManifest.xml:30:9-38:19
@@ -389,20 +366,14 @@ ADDED from [com.google.firebase:firebase-auth-ktx:23.0.0] /Users/tea/.gradle/cac
 		ADDED from [com.google.firebase:firebase-auth-ktx:23.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/8c9c627ea082db547ce1fbce2e0dbb98/transformed/jetified-firebase-auth-ktx-23.0.0/AndroidManifest.xml:12:17-119
 uses-permission#android.permission.INTERNET
 ADDED from [com.google.firebase:firebase-auth:23.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/3e52dea6a27465b656c5ce7f5cd83355/transformed/jetified-firebase-auth-23.0.0/AndroidManifest.xml:25:5-67
-MERGED from [com.google.firebase:firebase-firestore:25.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/41b3212c84f99509558aaab93f367905/transformed/jetified-firebase-firestore-25.0.0/AndroidManifest.xml:11:5-67
-MERGED from [com.google.firebase:firebase-firestore:25.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/41b3212c84f99509558aaab93f367905/transformed/jetified-firebase-firestore-25.0.0/AndroidManifest.xml:11:5-67
 MERGED from [com.google.android.recaptcha:recaptcha:18.4.0] /Users/tea/.gradle/caches/8.14.2/transforms/3ef3fd2bbfa1f25d4dd8a244839536ed/transformed/jetified-recaptcha-18.4.0/AndroidManifest.xml:7:5-67
 MERGED from [com.google.android.recaptcha:recaptcha:18.4.0] /Users/tea/.gradle/caches/8.14.2/transforms/3ef3fd2bbfa1f25d4dd8a244839536ed/transformed/jetified-recaptcha-18.4.0/AndroidManifest.xml:7:5-67
 	android:name
 		ADDED from [com.google.firebase:firebase-auth:23.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/3e52dea6a27465b656c5ce7f5cd83355/transformed/jetified-firebase-auth-23.0.0/AndroidManifest.xml:25:22-64
 uses-permission#android.permission.ACCESS_NETWORK_STATE
 ADDED from [com.google.firebase:firebase-auth:23.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/3e52dea6a27465b656c5ce7f5cd83355/transformed/jetified-firebase-auth-23.0.0/AndroidManifest.xml:26:5-79
-MERGED from [com.google.firebase:firebase-firestore:25.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/41b3212c84f99509558aaab93f367905/transformed/jetified-firebase-firestore-25.0.0/AndroidManifest.xml:10:5-79
-MERGED from [com.google.firebase:firebase-firestore:25.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/41b3212c84f99509558aaab93f367905/transformed/jetified-firebase-firestore-25.0.0/AndroidManifest.xml:10:5-79
 MERGED from [com.google.android.recaptcha:recaptcha:18.4.0] /Users/tea/.gradle/caches/8.14.2/transforms/3ef3fd2bbfa1f25d4dd8a244839536ed/transformed/jetified-recaptcha-18.4.0/AndroidManifest.xml:8:5-79
 MERGED from [com.google.android.recaptcha:recaptcha:18.4.0] /Users/tea/.gradle/caches/8.14.2/transforms/3ef3fd2bbfa1f25d4dd8a244839536ed/transformed/jetified-recaptcha-18.4.0/AndroidManifest.xml:8:5-79
-MERGED from [io.grpc:grpc-android:1.57.2] /Users/tea/.gradle/caches/8.14.2/transforms/9c557d22457822835ef95988b38be1f6/transformed/jetified-grpc-android-1.57.2/AndroidManifest.xml:7:5-79
-MERGED from [io.grpc:grpc-android:1.57.2] /Users/tea/.gradle/caches/8.14.2/transforms/9c557d22457822835ef95988b38be1f6/transformed/jetified-grpc-android-1.57.2/AndroidManifest.xml:7:5-79
 	android:name
 		ADDED from [com.google.firebase:firebase-auth:23.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/3e52dea6a27465b656c5ce7f5cd83355/transformed/jetified-firebase-auth-23.0.0/AndroidManifest.xml:26:22-76
 activity#com.google.firebase.auth.internal.GenericIdpActivity
@@ -459,24 +430,30 @@ ADDED from [com.google.firebase:firebase-auth:23.0.0] /Users/tea/.gradle/caches/
 		ADDED from [com.google.firebase:firebase-auth:23.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/3e52dea6a27465b656c5ce7f5cd83355/transformed/jetified-firebase-auth-23.0.0/AndroidManifest.xml:71:17-82
 	android:name
 		ADDED from [com.google.firebase:firebase-auth:23.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/3e52dea6a27465b656c5ce7f5cd83355/transformed/jetified-firebase-auth-23.0.0/AndroidManifest.xml:70:17-109
-meta-data#com.google.firebase.components:com.google.firebase.firestore.ktx.FirebaseFirestoreLegacyRegistrar
-ADDED from [com.google.firebase:firebase-firestore-ktx:25.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/57849135c07e275499c2d6d4e76faefd/transformed/jetified-firebase-firestore-ktx-25.0.0/AndroidManifest.xml:12:13-14:85
+meta-data#com.google.firebase.components:com.google.firebase.ktx.FirebaseCommonLegacyRegistrar
+ADDED from [com.google.firebase:firebase-common-ktx:21.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/3b88edb1d16091a59b888799759cd109/transformed/jetified-firebase-common-ktx-21.0.0/AndroidManifest.xml:12:13-14:85
 	android:value
-		ADDED from [com.google.firebase:firebase-firestore-ktx:25.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/57849135c07e275499c2d6d4e76faefd/transformed/jetified-firebase-firestore-ktx-25.0.0/AndroidManifest.xml:14:17-82
+		ADDED from [com.google.firebase:firebase-common-ktx:21.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/3b88edb1d16091a59b888799759cd109/transformed/jetified-firebase-common-ktx-21.0.0/AndroidManifest.xml:14:17-82
 	android:name
-		ADDED from [com.google.firebase:firebase-firestore-ktx:25.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/57849135c07e275499c2d6d4e76faefd/transformed/jetified-firebase-firestore-ktx-25.0.0/AndroidManifest.xml:13:17-129
-meta-data#com.google.firebase.components:com.google.firebase.firestore.FirebaseFirestoreKtxRegistrar
-ADDED from [com.google.firebase:firebase-firestore:25.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/41b3212c84f99509558aaab93f367905/transformed/jetified-firebase-firestore-25.0.0/AndroidManifest.xml:17:13-19:85
+		ADDED from [com.google.firebase:firebase-common-ktx:21.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/3b88edb1d16091a59b888799759cd109/transformed/jetified-firebase-common-ktx-21.0.0/AndroidManifest.xml:13:17-116
+provider#com.google.firebase.provider.FirebaseInitProvider
+ADDED from [com.google.firebase:firebase-common:21.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/0f29927be24ba1c25e72ec65c5ed9bf3/transformed/jetified-firebase-common-21.0.0/AndroidManifest.xml:23:9-28:39
+	android:authorities
+		ADDED from [com.google.firebase:firebase-common:21.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/0f29927be24ba1c25e72ec65c5ed9bf3/transformed/jetified-firebase-common-21.0.0/AndroidManifest.xml:25:13-72
+	android:exported
+		ADDED from [com.google.firebase:firebase-common:21.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/0f29927be24ba1c25e72ec65c5ed9bf3/transformed/jetified-firebase-common-21.0.0/AndroidManifest.xml:27:13-37
+	android:directBootAware
+		ADDED from [com.google.firebase:firebase-common:21.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/0f29927be24ba1c25e72ec65c5ed9bf3/transformed/jetified-firebase-common-21.0.0/AndroidManifest.xml:26:13-43
+	android:initOrder
+		ADDED from [com.google.firebase:firebase-common:21.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/0f29927be24ba1c25e72ec65c5ed9bf3/transformed/jetified-firebase-common-21.0.0/AndroidManifest.xml:28:13-36
+	android:name
+		ADDED from [com.google.firebase:firebase-common:21.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/0f29927be24ba1c25e72ec65c5ed9bf3/transformed/jetified-firebase-common-21.0.0/AndroidManifest.xml:24:13-77
+meta-data#com.google.firebase.components:com.google.firebase.FirebaseCommonKtxRegistrar
+ADDED from [com.google.firebase:firebase-common:21.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/0f29927be24ba1c25e72ec65c5ed9bf3/transformed/jetified-firebase-common-21.0.0/AndroidManifest.xml:35:13-37:85
 	android:value
-		ADDED from [com.google.firebase:firebase-firestore:25.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/41b3212c84f99509558aaab93f367905/transformed/jetified-firebase-firestore-25.0.0/AndroidManifest.xml:19:17-82
+		ADDED from [com.google.firebase:firebase-common:21.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/0f29927be24ba1c25e72ec65c5ed9bf3/transformed/jetified-firebase-common-21.0.0/AndroidManifest.xml:37:17-82
 	android:name
-		ADDED from [com.google.firebase:firebase-firestore:25.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/41b3212c84f99509558aaab93f367905/transformed/jetified-firebase-firestore-25.0.0/AndroidManifest.xml:18:17-122
-meta-data#com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar
-ADDED from [com.google.firebase:firebase-firestore:25.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/41b3212c84f99509558aaab93f367905/transformed/jetified-firebase-firestore-25.0.0/AndroidManifest.xml:20:13-22:85
-	android:value
-		ADDED from [com.google.firebase:firebase-firestore:25.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/41b3212c84f99509558aaab93f367905/transformed/jetified-firebase-firestore-25.0.0/AndroidManifest.xml:22:17-82
-	android:name
-		ADDED from [com.google.firebase:firebase-firestore:25.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/41b3212c84f99509558aaab93f367905/transformed/jetified-firebase-firestore-25.0.0/AndroidManifest.xml:21:17-111
+		ADDED from [com.google.firebase:firebase-common:21.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/0f29927be24ba1c25e72ec65c5ed9bf3/transformed/jetified-firebase-common-21.0.0/AndroidManifest.xml:36:17-109
 service#androidx.credentials.playservices.CredentialProviderMetadataHolder
 ADDED from [androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/tea/.gradle/caches/8.14.2/transforms/b374817cf4ac3790bf8f9e090b424dc5/transformed/jetified-credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:24:9-32:19
 	android:enabled
@@ -527,6 +504,10 @@ ADDED from [com.google.android.gms:play-services-auth:20.7.0] /Users/tea/.gradle
 		ADDED from [com.google.android.gms:play-services-auth:20.7.0] /Users/tea/.gradle/caches/8.14.2/transforms/e8793065d2ce35aa0da3862db3afa8b1/transformed/jetified-play-services-auth-20.7.0/AndroidManifest.xml:36:13-107
 	android:name
 		ADDED from [com.google.android.gms:play-services-auth:20.7.0] /Users/tea/.gradle/caches/8.14.2/transforms/e8793065d2ce35aa0da3862db3afa8b1/transformed/jetified-play-services-auth-20.7.0/AndroidManifest.xml:34:13-89
+uses-permission#com.google.android.providers.gsf.permission.READ_GSERVICES
+ADDED from [com.google.android.recaptcha:recaptcha:18.4.0] /Users/tea/.gradle/caches/8.14.2/transforms/3ef3fd2bbfa1f25d4dd8a244839536ed/transformed/jetified-recaptcha-18.4.0/AndroidManifest.xml:9:5-98
+	android:name
+		ADDED from [com.google.android.recaptcha:recaptcha:18.4.0] /Users/tea/.gradle/caches/8.14.2/transforms/3ef3fd2bbfa1f25d4dd8a244839536ed/transformed/jetified-recaptcha-18.4.0/AndroidManifest.xml:9:22-95
 activity#com.google.android.gms.common.api.GoogleApiActivity
 ADDED from [com.google.android.gms:play-services-base:18.0.1] /Users/tea/.gradle/caches/8.14.2/transforms/f862aa19ad44b192d19a93b635a820a8/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:9-22:45
 	android:exported
@@ -535,34 +516,6 @@ ADDED from [com.google.android.gms:play-services-base:18.0.1] /Users/tea/.gradle
 		ADDED from [com.google.android.gms:play-services-base:18.0.1] /Users/tea/.gradle/caches/8.14.2/transforms/f862aa19ad44b192d19a93b635a820a8/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:21:19-78
 	android:name
 		ADDED from [com.google.android.gms:play-services-base:18.0.1] /Users/tea/.gradle/caches/8.14.2/transforms/f862aa19ad44b192d19a93b635a820a8/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:19-85
-meta-data#com.google.firebase.components:com.google.firebase.ktx.FirebaseCommonLegacyRegistrar
-ADDED from [com.google.firebase:firebase-common-ktx:21.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/3b88edb1d16091a59b888799759cd109/transformed/jetified-firebase-common-ktx-21.0.0/AndroidManifest.xml:12:13-14:85
-	android:value
-		ADDED from [com.google.firebase:firebase-common-ktx:21.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/3b88edb1d16091a59b888799759cd109/transformed/jetified-firebase-common-ktx-21.0.0/AndroidManifest.xml:14:17-82
-	android:name
-		ADDED from [com.google.firebase:firebase-common-ktx:21.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/3b88edb1d16091a59b888799759cd109/transformed/jetified-firebase-common-ktx-21.0.0/AndroidManifest.xml:13:17-116
-provider#com.google.firebase.provider.FirebaseInitProvider
-ADDED from [com.google.firebase:firebase-common:21.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/0f29927be24ba1c25e72ec65c5ed9bf3/transformed/jetified-firebase-common-21.0.0/AndroidManifest.xml:23:9-28:39
-	android:authorities
-		ADDED from [com.google.firebase:firebase-common:21.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/0f29927be24ba1c25e72ec65c5ed9bf3/transformed/jetified-firebase-common-21.0.0/AndroidManifest.xml:25:13-72
-	android:exported
-		ADDED from [com.google.firebase:firebase-common:21.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/0f29927be24ba1c25e72ec65c5ed9bf3/transformed/jetified-firebase-common-21.0.0/AndroidManifest.xml:27:13-37
-	android:directBootAware
-		ADDED from [com.google.firebase:firebase-common:21.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/0f29927be24ba1c25e72ec65c5ed9bf3/transformed/jetified-firebase-common-21.0.0/AndroidManifest.xml:26:13-43
-	android:initOrder
-		ADDED from [com.google.firebase:firebase-common:21.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/0f29927be24ba1c25e72ec65c5ed9bf3/transformed/jetified-firebase-common-21.0.0/AndroidManifest.xml:28:13-36
-	android:name
-		ADDED from [com.google.firebase:firebase-common:21.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/0f29927be24ba1c25e72ec65c5ed9bf3/transformed/jetified-firebase-common-21.0.0/AndroidManifest.xml:24:13-77
-meta-data#com.google.firebase.components:com.google.firebase.FirebaseCommonKtxRegistrar
-ADDED from [com.google.firebase:firebase-common:21.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/0f29927be24ba1c25e72ec65c5ed9bf3/transformed/jetified-firebase-common-21.0.0/AndroidManifest.xml:35:13-37:85
-	android:value
-		ADDED from [com.google.firebase:firebase-common:21.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/0f29927be24ba1c25e72ec65c5ed9bf3/transformed/jetified-firebase-common-21.0.0/AndroidManifest.xml:37:17-82
-	android:name
-		ADDED from [com.google.firebase:firebase-common:21.0.0] /Users/tea/.gradle/caches/8.14.2/transforms/0f29927be24ba1c25e72ec65c5ed9bf3/transformed/jetified-firebase-common-21.0.0/AndroidManifest.xml:36:17-109
-uses-permission#com.google.android.providers.gsf.permission.READ_GSERVICES
-ADDED from [com.google.android.recaptcha:recaptcha:18.4.0] /Users/tea/.gradle/caches/8.14.2/transforms/3ef3fd2bbfa1f25d4dd8a244839536ed/transformed/jetified-recaptcha-18.4.0/AndroidManifest.xml:9:5-98
-	android:name
-		ADDED from [com.google.android.recaptcha:recaptcha:18.4.0] /Users/tea/.gradle/caches/8.14.2/transforms/3ef3fd2bbfa1f25d4dd8a244839536ed/transformed/jetified-recaptcha-18.4.0/AndroidManifest.xml:9:22-95
 service#androidx.room.MultiInstanceInvalidationService
 ADDED from [androidx.room:room-runtime:2.6.1] /Users/tea/.gradle/caches/8.14.2/transforms/32b32b6f3b84bedecc246a3477428e10/transformed/room-runtime-2.6.1/AndroidManifest.xml:24:9-28:63
 	android:exported

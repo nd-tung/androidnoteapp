@@ -8,6 +8,11 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.List
 import androidx.compose.material.icons.filled.Refresh
+import androidx.compose.material.icons.filled.Check
+import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.Send
+import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -28,11 +33,9 @@ fun NoteListScreen(
 ) {
     val notesState by viewModel.notesState.collectAsState()
 
-    // Effect to load notes when the screen is first composed or viewModel changes
-    LaunchedEffect(key1 = viewModel) {
-        viewModel.loadNotes()
-    }
-
+    // Only refresh on manual refresh, not on every composition
+    // The ViewModel's init block already loads notes initially
+    
     Scaffold(
         topBar = {
             TopAppBar(
@@ -65,8 +68,12 @@ fun NoteListScreen(
                         )
                     } else {
                         LazyColumn(modifier = Modifier.fillMaxSize()) {
-                            items(state.data, key = { note -> note.id ?: UUID.randomUUID() }) { note -> // Use note.id as key
-                                NoteListItem(note = note, onNoteClick = onNoteClick)
+                            items(state.data, key = { note -> note.id }) { note ->
+                                NoteListItem(
+                                    note = note, 
+                                    onNoteClick = onNoteClick,
+                                    viewModel = viewModel
+                                )
                             }
                         }
                     }
@@ -93,37 +100,56 @@ fun NoteListScreen(
 }
 
 @Composable
-fun NoteListItem(note: Note, onNoteClick: (noteId: Long) -> Unit) { // Changed to Long
+fun NoteListItem(
+    note: Note, 
+    onNoteClick: (noteId: Long) -> Unit,
+    viewModel: NoteViewModel
+) {
+    var showSyncMenu by remember { mutableStateOf(false) }
+
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .padding(horizontal = 16.dp, vertical = 8.dp)
-            .clickable(enabled = note.id != null) { // Only clickable if ID exists
-                note.id?.let { onNoteClick(it) }
-            }
+            .clickable { onNoteClick(note.id) }
     ) {
         Row(
             modifier = Modifier.padding(16.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
             Column(modifier = Modifier.weight(1f)) {
-                Text(text = note.title, style = MaterialTheme.typography.titleMedium)
-                Spacer(modifier = Modifier.height(4.dp))
-                // Display updated_at if available and parseable, otherwise fallback to local timestamp
-                val displayTimestamp = remember(note.updated_at, note.timestamp) {
-                    note.updated_at?.let { isoString ->
-                        try {
-                            // Attempt to parse ISO 8601 string (common from Supabase)
-                            // This parsing might need a more robust solution if formats vary
-                            val instant = java.time.Instant.parse(isoString)
-                            Date.from(instant).time
-                        } catch (e: Exception) {
-                            note.timestamp // Fallback to local timestamp if parsing fails
-                        }
-                    } ?: note.timestamp
+                Row(
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Text(
+                        text = note.title, 
+                        style = MaterialTheme.typography.titleMedium,
+                        modifier = Modifier.weight(1f)
+                    )
+                    // Sync status indicator
+                    Icon(
+                        imageVector = when {
+                            note.needsSync -> Icons.Default.Refresh
+                            note.isSynced -> Icons.Default.Check
+                            else -> Icons.Default.Close
+                        },
+                        contentDescription = when {
+                            note.needsSync -> "Needs Sync"
+                            note.isSynced -> "Synced"
+                            else -> "Not Synced"
+                        },
+                        tint = when {
+                            note.needsSync -> MaterialTheme.colorScheme.error
+                            note.isSynced -> MaterialTheme.colorScheme.primary
+                            else -> MaterialTheme.colorScheme.onSurfaceVariant
+                        },
+                        modifier = Modifier.size(16.dp)
+                    )
                 }
+                Spacer(modifier = Modifier.height(4.dp))
+                // Display timestamp using local timestamp
                 Text(
-                    text = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault()).format(Date(displayTimestamp)),
+                    text = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault()).format(Date(note.timestamp)),
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
@@ -136,6 +162,49 @@ fun NoteListItem(note: Note, onNoteClick: (noteId: Long) -> Unit) { // Changed t
                     )
                 }
             }
+            
+            // Quick sync menu
+            Box {
+                IconButton(
+                    onClick = { showSyncMenu = true },
+                    modifier = Modifier.size(40.dp)
+                ) {
+                    Icon(
+                        Icons.Default.MoreVert, 
+                        contentDescription = "Sync Options",
+                        modifier = Modifier.size(20.dp)
+                    )
+                }
+                
+                DropdownMenu(
+                    expanded = showSyncMenu,
+                    onDismissRequest = { showSyncMenu = false }
+                ) {
+                    DropdownMenuItem(
+                        text = { Text("Sync to Cloud") },
+                        onClick = {
+                            showSyncMenu = false
+                            viewModel.syncNoteToCloud(note)
+                        },
+                        leadingIcon = {
+                            Icon(Icons.Default.Send, contentDescription = null)
+                        }
+                    )
+                    if (note.serverId != null) {
+                        DropdownMenuItem(
+                            text = { Text("Sync from Cloud") },
+                            onClick = {
+                                showSyncMenu = false
+                                viewModel.syncNoteFromCloud(note.serverId)
+                            },
+                            leadingIcon = {
+                                Icon(Icons.Default.Info, contentDescription = null)
+                            }
+                        )
+                    }
+                }
+            }
+            
             if (note.isChecklist) {
                 Icon(
                     Icons.Filled.List,
