@@ -1,36 +1,35 @@
 package com.example.simplenoteapp.ui.notedetail
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material.icons.filled.Delete
-import androidx.compose.material.icons.filled.Done
-import androidx.compose.material.icons.filled.Send
-import androidx.compose.material.icons.filled.Info
-import androidx.compose.material.icons.filled.MoreVert
-import androidx.compose.material.icons.filled.Check
-import androidx.compose.material.icons.filled.Close
-import androidx.compose.material.icons.filled.Refresh
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
-import com.example.simplenoteapp.data.Note
-import com.example.simplenoteapp.viewmodel.NoteViewModel
-import com.example.simplenoteapp.viewmodel.NoteUiState
-
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
-import androidx.compose.material3.TopAppBar
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.*
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardCapitalization
+import androidx.compose.ui.unit.dp
+import com.example.simplenoteapp.R
+import com.example.simplenoteapp.data.Note
+import com.example.simplenoteapp.viewmodel.NoteUiState
+import com.example.simplenoteapp.viewmodel.NoteViewModel
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.*
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NoteDetailScreen(
-    noteIdString: String?, // Renamed from noteId, kept as String from NavGraph
+    noteIdString: String?,
     onNavigateUp: () -> Unit,
-    viewModel: NoteViewModel
+    viewModel: NoteViewModel,
+    drawerState: DrawerState // Added DrawerState parameter
 ) {
     val selectedNoteState by viewModel.selectedNoteState.collectAsState()
     val actionResultState by viewModel.actionResult.collectAsState()
@@ -42,23 +41,19 @@ fun NoteDetailScreen(
     var title by remember { mutableStateOf("") }
     var content by remember { mutableStateOf("") }
     var isChecklist by remember { mutableStateOf(false) }
-    var checklistItems by remember { mutableStateOf(listOf<String>()) } // Initialized as empty
+    var checklistItems by remember { mutableStateOf(listOf<String>()) }
     var showSyncMenu by remember { mutableStateOf(false) }
 
-    // Parse noteIdString and load note
     LaunchedEffect(key1 = noteIdString) {
         if (noteIdString == "-1" || noteIdString == null) {
-            // New note case
             isNewNote = true
             currentNoteId = null
-            viewModel.clearSelectedNote() // Clear for new note
-            // Reset local fields for new note scenario explicitly
+            viewModel.clearSelectedNote()
             title = ""
             content = ""
             isChecklist = false
-            checklistItems = listOf("") // Start with one empty item for new checklist
+            checklistItems = listOf("")
         } else {
-            // Existing note case
             isNewNote = false
             noteIdString.toLongOrNull()?.let { id ->
                 currentNoteId = id
@@ -67,24 +62,23 @@ fun NoteDetailScreen(
         }
     }
 
-    // Update local UI state when selectedNoteState changes (e.g., after loading)
     LaunchedEffect(selectedNoteState) {
         if (selectedNoteState is NoteUiState.Success && !isNewNote) {
             (selectedNoteState as NoteUiState.Success<Note?>).data?.let { note ->
                 title = note.title
                 content = note.content
                 isChecklist = note.isChecklist
-                if (isChecklist) {
-                    // Basic split, ensure content is not empty, provide default if it is
-                    checklistItems = if (note.content.isNotEmpty()) note.content.split("\n") else listOf("")
+                checklistItems = if (note.isChecklist && note.content.isNotEmpty()) {
+                    note.content.split("\n")
+                } else if (note.isChecklist) {
+                    listOf("")
                 } else {
-                    checklistItems = listOf() // Clear if not a checklist
+                    listOf()
                 }
             }
         }
     }
 
-    // Handle action results (save, delete) - only for showing errors, navigation is immediate
     LaunchedEffect(actionResultState) {
         when (val result = actionResultState) {
             is NoteUiState.Error -> {
@@ -95,27 +89,33 @@ fun NoteDetailScreen(
                     )
                 }
             }
-            else -> { /* No need to handle success or loading here since navigation happens immediately */ }
+            else -> { /* No explicit success message needed here as navigation handles it */ }
         }
     }
-
 
     Scaffold(
         snackbarHost = { SnackbarHost(snackbarHostState) },
         topBar = {
             TopAppBar(
-                title = { Text(if (isNewNote) "New Note" else "Edit Note") },
+                title = { Text(if (isNewNote) "Add New Note" else "Edit Note") },
                 navigationIcon = {
-                    IconButton(onClick = onNavigateUp) {
-                        Icon(Icons.Default.ArrowBack, contentDescription = "Back")
+                    IconButton(onClick = {
+                        coroutineScope.launch {
+                            if (drawerState.isOpen) drawerState.close() else drawerState.open()
+                        }
+                    }) {
+                        Icon(Icons.Filled.Menu, contentDescription = stringResource(R.string.open_drawer_description))
                     }
                 },
                 actions = {
+                    // Back arrow for navigation - it's useful to have it here regardless of drawer state for quick back navigation
+                    IconButton(onClick = onNavigateUp) {
+                        Icon(Icons.Default.ArrowBack, contentDescription = "Back to notes list")
+                    }
                     if (!isNewNote && currentNoteId != null) {
-                        // Sync dropdown menu
                         Box {
                             IconButton(onClick = { showSyncMenu = true }) {
-                                Icon(Icons.Default.MoreVert, contentDescription = "Sync Options")
+                                Icon(Icons.Default.MoreVert, contentDescription = "More options")
                             }
                             DropdownMenu(
                                 expanded = showSyncMenu,
@@ -130,7 +130,7 @@ fun NoteDetailScreen(
                                         }
                                     },
                                     leadingIcon = {
-                                        Icon(Icons.Default.Send, contentDescription = null)
+                                        Icon(Icons.Default.CloudUpload, contentDescription = "Sync to cloud")
                                     }
                                 )
                                 val currentNote = (selectedNoteState as? NoteUiState.Success<Note?>)?.data
@@ -144,20 +144,24 @@ fun NoteDetailScreen(
                                             }
                                         },
                                         leadingIcon = {
-                                            Icon(Icons.Default.Info, contentDescription = null)
+                                            Icon(Icons.Default.CloudDownload, contentDescription = "Sync from cloud")
                                         }
                                     )
                                 }
+                                DropdownMenuItem(
+                                    text = { Text("Delete Note") },
+                                    onClick = {
+                                        showSyncMenu = false
+                                        (selectedNoteState as? NoteUiState.Success<Note?>)?.data?.let { noteToDelete ->
+                                            viewModel.deleteNote(noteToDelete)
+                                            onNavigateUp()
+                                        }
+                                    },
+                                    leadingIcon = {
+                                        Icon(Icons.Default.Delete, contentDescription = "Delete note")
+                                    }
+                                )
                             }
-                        }
-                        
-                        IconButton(onClick = {
-                            (selectedNoteState as? NoteUiState.Success<Note?>)?.data?.let { noteToDelete ->
-                                viewModel.deleteNote(noteToDelete)
-                                onNavigateUp() // Navigate after initiating delete
-                            }
-                        }) {
-                            Icon(Icons.Default.Delete, contentDescription = "Delete Note")
                         }
                     }
                     IconButton(onClick = {
@@ -167,20 +171,18 @@ fun NoteDetailScreen(
                             content
                         }
                         val noteToSave = if (!isNewNote && currentNoteId != null) {
-                            // Editing existing note - mark as needing sync
-                            val currentNote = (selectedNoteState as? NoteUiState.Success<Note?>)?.data
+                            val currentLoadedNote = (selectedNoteState as? NoteUiState.Success<Note?>)?.data
                             Note(
                                 id = currentNoteId!!,
                                 title = title.trim(),
                                 content = finalContent.trim(),
                                 isChecklist = isChecklist,
-                                serverId = currentNote?.serverId,
+                                serverId = currentLoadedNote?.serverId,
                                 isSynced = false,
                                 needsSync = true,
-                                lastSyncTime = currentNote?.lastSyncTime ?: 0L
+                                lastSyncTime = currentLoadedNote?.lastSyncTime ?: 0L
                             )
                         } else {
-                            // New note - will be marked as needing sync automatically
                             Note(
                                 title = title.trim(),
                                 content = finalContent.trim(),
@@ -193,56 +195,41 @@ fun NoteDetailScreen(
                         } else {
                             viewModel.updateNote(noteToSave)
                         }
-                        onNavigateUp() // Navigate after initiating save
+                        onNavigateUp()
                     }) {
-                        Icon(Icons.Default.Done, contentDescription = "Save Note")
+                        Icon(Icons.Default.Done, contentDescription = "Save note")
                     }
                 }
             )
-        }
+        },
+        containerColor = MaterialTheme.colorScheme.background
     ) { paddingValues ->
-        when (val state = selectedNoteState) {
-            is NoteUiState.Loading -> {
-                if (!isNewNote && currentNoteId != null) { // Only show loading if we are expecting a note
-                    Box(modifier = Modifier.fillMaxSize().padding(paddingValues), contentAlignment = Alignment.Center) {
-                        CircularProgressIndicator()
+        val showLoading = selectedNoteState is NoteUiState.Loading && !isNewNote && currentNoteId != null
+
+        if (showLoading) {
+            Box(modifier = Modifier.fillMaxSize().padding(paddingValues), contentAlignment = Alignment.Center) {
+                CircularProgressIndicator()
+            }
+        } else {
+            NoteEditorContent(
+                modifier = Modifier.padding(paddingValues),
+                title = title,
+                onTitleChange = { title = it },
+                content = content,
+                onContentChange = { content = it },
+                isChecklist = isChecklist,
+                onIsChecklistChange = {
+                    isChecklist = it
+                    if (it && checklistItems.isEmpty()) {
+                        checklistItems = listOf("")
+                    } else if (!it) {
+                        checklistItems = emptyList()
                     }
-                } else { // New note, show editor immediately
-                    NoteEditorContent(
-                        modifier = Modifier.padding(paddingValues),
-                        title = title,
-                        onTitleChange = { title = it },
-                        content = content,
-                        onContentChange = { content = it },
-                        isChecklist = isChecklist,
-                        onIsChecklistChange = { isChecklist = it },
-                        checklistItems = checklistItems,
-                        onChecklistItemsChange = { checklistItems = it },
-                        note = null // New note
-                    )
-                }
-            }
-            is NoteUiState.Success -> {
-                // Data is already set to local state vars via LaunchedEffect(selectedNoteState)
-                val currentNote = (state as NoteUiState.Success<Note?>).data
-                NoteEditorContent(
-                    modifier = Modifier.padding(paddingValues),
-                    title = title,
-                    onTitleChange = { title = it },
-                    content = content,
-                    onContentChange = { content = it },
-                    isChecklist = isChecklist,
-                    onIsChecklistChange = { isChecklist = it },
-                    checklistItems = checklistItems,
-                    onChecklistItemsChange = { checklistItems = it },
-                    note = currentNote
-                )
-            }
-            is NoteUiState.Error -> {
-                 Box(modifier = Modifier.fillMaxSize().padding(paddingValues), contentAlignment = Alignment.Center) {
-                    Text(state.message, color = MaterialTheme.colorScheme.error)
-                }
-            }
+                },
+                checklistItems = checklistItems,
+                onChecklistItemsChange = { checklistItems = it },
+                note = (selectedNoteState as? NoteUiState.Success<Note?>)?.data
+            )
         }
     }
 }
@@ -258,44 +245,44 @@ fun NoteEditorContent(
     onIsChecklistChange: (Boolean) -> Unit,
     checklistItems: List<String>,
     onChecklistItemsChange: (List<String>) -> Unit,
-    note: Note? = null // Current note for sync status
+    note: Note? = null
 ) {
     Column(
         modifier = modifier
-            .padding(16.dp)
             .fillMaxSize()
+            .padding(16.dp)
     ) {
-        // Sync status indicator
         note?.let { currentNote ->
-            SyncStatusCard(note = currentNote)
-            Spacer(modifier = Modifier.height(8.dp))
+            if (currentNote.serverId != null) {
+                SyncStatusCard(note = currentNote)
+                Spacer(modifier = Modifier.height(12.dp))
+            }
         }
-        
+
         OutlinedTextField(
             value = title,
             onValueChange = onTitleChange,
             label = { Text("Title") },
             modifier = Modifier.fillMaxWidth(),
-            singleLine = true
+            textStyle = MaterialTheme.typography.titleLarge,
+            singleLine = true,
+            keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next, capitalization = KeyboardCapitalization.Sentences)
         )
         Spacer(modifier = Modifier.height(16.dp))
+
         Row(
             modifier = Modifier.fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            Text("Is Checklist?")
-            Spacer(modifier = Modifier.width(8.dp))
+            Text("Is Checklist?", style = MaterialTheme.typography.bodyLarge)
             Switch(
                 checked = isChecklist,
-                onCheckedChange = {
-                    onIsChecklistChange(it)
-                    if (it && checklistItems.isEmpty()) { // If switching to checklist and it's empty
-                        onChecklistItemsChange(listOf("")) // Add one empty item
-                    }
-                }
+                onCheckedChange = onIsChecklistChange
             )
         }
         Spacer(modifier = Modifier.height(16.dp))
+
         if (isChecklist) {
             LazyColumn(modifier = Modifier.weight(1f)) {
                 itemsIndexed(checklistItems) { index, item ->
@@ -312,15 +299,28 @@ fun NoteEditorContent(
                             val newList = checklistItems.toMutableList()
                             newList[index] = updatedItem
                             onChecklistItemsChange(newList)
+                        },
+                        onDeleteItem = {
+                            val newList = checklistItems.toMutableList()
+                            newList.removeAt(index)
+                            // If the list becomes empty after deletion, add a new empty item
+                            // to allow the user to continue adding items easily.
+                            if (newList.isEmpty()) {
+                                onChecklistItemsChange(listOf(""))
+                            } else {
+                                onChecklistItemsChange(newList)
+                            }
                         }
                     )
                 }
                 item {
                     Button(
-                        onClick = { onChecklistItemsChange(checklistItems + "[ ] ") }, // Add new item with unchecked prefix
-                        modifier = Modifier.padding(top = 8.dp)
+                        onClick = { onChecklistItemsChange(checklistItems + "[ ] ") },
+                        modifier = Modifier.padding(top = 8.dp).fillMaxWidth()
                     ) {
-                        Text("Add Checklist Item")
+                        Icon(Icons.Filled.Add, contentDescription = "Add checklist item")
+                        Spacer(Modifier.width(ButtonDefaults.IconSpacing))
+                        Text("Add Item")
                     }
                 }
             }
@@ -332,7 +332,8 @@ fun NoteEditorContent(
                 modifier = Modifier
                     .fillMaxWidth()
                     .weight(1f),
-                maxLines = 10 // Allow more lines for content
+                textStyle = MaterialTheme.typography.bodyLarge,
+                keyboardOptions = KeyboardOptions.Default.copy(capitalization = KeyboardCapitalization.Sentences)
             )
         }
     }
@@ -342,12 +343,13 @@ fun NoteEditorContent(
 fun ChecklistItemEditor(
     item: String,
     onItemChange: (String) -> Unit,
-    onCheckedChange: (Boolean) -> Unit
+    onCheckedChange: (Boolean) -> Unit,
+    onDeleteItem: () -> Unit
 ) {
     val isChecked = item.startsWith("[x] ")
     val text = item.removePrefix("[x] ").removePrefix("[ ] ")
 
-    Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth()) {
+    Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp)) {
         Checkbox(
             checked = isChecked,
             onCheckedChange = onCheckedChange
@@ -358,8 +360,12 @@ fun ChecklistItemEditor(
                 onItemChange(if (isChecked) "[x] $newText" else "[ ] $newText")
             },
             modifier = Modifier.weight(1f),
-            singleLine = true
+            singleLine = true,
+            placeholder = { Text("List item") }
         )
+        IconButton(onClick = onDeleteItem) {
+            Icon(Icons.Filled.DeleteOutline, contentDescription = "Delete checklist item") // Changed to DeleteOutline
+        }
     }
 }
 
@@ -367,69 +373,60 @@ fun ChecklistItemEditor(
 fun SyncStatusCard(note: Note) {
     Card(
         modifier = Modifier.fillMaxWidth(),
+        elevation = CardDefaults.cardElevation(defaultElevation = 1.dp), // Subtle elevation
         colors = CardDefaults.cardColors(
             containerColor = when {
-                note.needsSync -> MaterialTheme.colorScheme.errorContainer
-                note.isSynced -> MaterialTheme.colorScheme.primaryContainer
-                else -> MaterialTheme.colorScheme.surfaceVariant
+                note.needsSync -> MaterialTheme.colorScheme.errorContainer.copy(alpha = 0.3f) // Softer error
+                note.isSynced -> MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.3f) // Softer success
+                else -> MaterialTheme.colorScheme.secondaryContainer.copy(alpha = 0.3f) // Neutral for not synced
             }
         )
     ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(12.dp),
-            verticalAlignment = Alignment.CenterVertically
+                .padding(horizontal = 12.dp, vertical = 8.dp), // Adjusted padding
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            Icon(
-                imageVector = when {
-                    note.needsSync -> Icons.Default.Refresh
-                    note.isSynced -> Icons.Default.Check
-                    else -> Icons.Default.Close
-                },
-                contentDescription = null,
-                tint = when {
-                    note.needsSync -> MaterialTheme.colorScheme.onErrorContainer
-                    note.isSynced -> MaterialTheme.colorScheme.onPrimaryContainer
-                    else -> MaterialTheme.colorScheme.onSurfaceVariant
-                }
-            )
-            Spacer(modifier = Modifier.width(8.dp))
-            Column(modifier = Modifier.weight(1f)) {
-                Text(
-                    text = when {
-                        note.needsSync -> "Needs Sync"
-                        note.isSynced -> "Synced"
-                        else -> "Not Synced"
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Icon(
+                    imageVector = when {
+                        note.needsSync -> Icons.Default.SyncProblem
+                        note.isSynced -> Icons.Default.CloudDone
+                        else -> Icons.Default.CloudOff
                     },
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = when {
-                        note.needsSync -> MaterialTheme.colorScheme.onErrorContainer
-                        note.isSynced -> MaterialTheme.colorScheme.onPrimaryContainer
-                        else -> MaterialTheme.colorScheme.onSurfaceVariant
+                    contentDescription = "Sync Status: " + when {
+                        note.needsSync -> "Changes pending sync"
+                        note.isSynced -> "Synced with cloud"
+                        else -> "Not synced"
+                    },
+                    tint = when {
+                        note.needsSync -> MaterialTheme.colorScheme.error // Keep strong color for icon
+                        note.isSynced -> MaterialTheme.colorScheme.primary
+                        else -> MaterialTheme.colorScheme.onSecondaryContainer
                     }
                 )
-                if (note.lastSyncTime > 0) {
-                    Text(
-                        text = "Last sync: ${java.text.SimpleDateFormat("MMM dd, HH:mm", java.util.Locale.getDefault()).format(java.util.Date(note.lastSyncTime))}",
-                        style = MaterialTheme.typography.bodySmall,
-                        color = when {
-                            note.needsSync -> MaterialTheme.colorScheme.onErrorContainer
-                            note.isSynced -> MaterialTheme.colorScheme.onPrimaryContainer
-                            else -> MaterialTheme.colorScheme.onSurfaceVariant
-                        }
-                    )
-                }
-            }
-            if (note.serverId != null) {
+                Spacer(modifier = Modifier.width(8.dp))
                 Text(
-                    text = "ID: ${note.serverId}",
-                    style = MaterialTheme.typography.bodySmall,
+                    text = when {
+                        note.needsSync -> "Changes pending sync"
+                        note.isSynced -> "Synced with cloud"
+                        else -> "Not synced"
+                    },
+                    style = MaterialTheme.typography.labelLarge, // Slightly larger for emphasis
                     color = when {
                         note.needsSync -> MaterialTheme.colorScheme.onErrorContainer
                         note.isSynced -> MaterialTheme.colorScheme.onPrimaryContainer
-                        else -> MaterialTheme.colorScheme.onSurfaceVariant
+                        else -> MaterialTheme.colorScheme.onSecondaryContainer
                     }
+                )
+            }
+            if (note.lastSyncTime > 0) {
+                Text(
+                    text = "Last: ${SimpleDateFormat("dd MMM, HH:mm", Locale.getDefault()).format(Date(note.lastSyncTime))}",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant // More neutral color for timestamp
                 )
             }
         }

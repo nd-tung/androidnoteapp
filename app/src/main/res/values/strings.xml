@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">SimpleNoteApp</string>
+    <string name="notes_screen_title">Notes</string>
+    <string name="account_screen_title">Account</string>
+    <string name="theme_settings_title">Theme Settings</string>
+    <string name="open_drawer_description">Open navigation drawer</string>
+    <string name="refresh_notes_description">Refresh notes</string>
+    <string name="add_note_description">Add new note</string>
 </resources>
