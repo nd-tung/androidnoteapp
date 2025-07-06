@@ -1,0 +1,1400 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<incidents format="6" by="lint 8.11.0" type="incidents">
+
+    <incident
+        id="OldTargetApi"
+        severity="warning"
+        message="Not targeting the latest versions of Android; compatibility modes apply. Consider testing and updating this version. Consult the `android.os.Build.VERSION_CODES` javadoc for details.">
+        <fix-replace
+            description="Update targetSdkVersion to 36"
+            oldString="34"
+            replacement="36"
+            priority="0"/>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="16"
+            column="9"
+            startOffset="405"
+            endLine="16"
+            endColumn="23"
+            endOffset="419"/>
+    </incident>
+
+    <incident
+        id="RedundantLabel"
+        severity="warning"
+        message="Redundant label can be removed">
+        <fix-attribute
+            description="Delete label"
+            namespace="http://schemas.android.com/apk/res/android"
+            attribute="label"/>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*manifest*0}"
+            line="19"
+            column="13"
+            startOffset="733"
+            endLine="19"
+            endColumn="45"
+            endOffset="765"/>
+    </incident>
+
+    <incident
+        id="AndroidGradlePluginVersion"
+        severity="warning"
+        message="A newer version of Gradle than 8.14.2 is available: 8.14.3">
+        <fix-replace
+            description="Update to 8.14.3"
+            oldString="8.14.2"
+            replacement="8.14.3"
+            priority="0"/>
+        <location
+            file="$HOME/Documents/simple_note/SimpleNoteApp/gradle/wrapper/gradle-wrapper.properties"
+            line="3"
+            column="17"
+            startOffset="81"
+            endLine="3"
+            endColumn="81"
+            endOffset="145"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of `compileSdkVersion` than 34 is available: 36">
+        <fix-replace
+            description="Set compileSdkVersion to 36"
+            oldString="34"
+            replacement="36"
+            priority="0"/>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="11"
+            column="5"
+            startOffset="288"
+            endLine="11"
+            endColumn="20"
+            endOffset="303"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of com.google.firebase:firebase-bom than 33.0.0 is available: 33.16.0">
+        <fix-replace
+            description="Change to 33.16.0"
+            family="Update versions"
+            oldString="33.0.0"
+            replacement="33.16.0"
+            priority="0"/>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="54"
+            column="20"
+            startOffset="1290"
+            endLine="54"
+            endColumn="71"
+            endOffset="1341"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.compose:compose-bom than 2023.08.00 is available: 2025.06.01">
+        <fix-replace
+            description="Change to 2025.06.01"
+            family="Update versions"
+            oldString="2023.08.00"
+            replacement="2025.06.01"
+            priority="0"/>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="55"
+            column="20"
+            startOffset="1362"
+            endLine="55"
+            endColumn="71"
+            endOffset="1413"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.navigation:navigation-compose than 2.7.7 is available: 2.9.1">
+        <fix-replace
+            description="Change to 2.9.1"
+            family="Update versions"
+            oldString="2.7.7"
+            replacement="2.9.1"
+            priority="0"/>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="60"
+            column="20"
+            startOffset="1653"
+            endLine="60"
+            endColumn="66"
+            endOffset="1699"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.lifecycle:lifecycle-runtime-ktx than 2.7.0 is available: 2.9.1">
+        <fix-replace
+            description="Change to 2.9.1"
+            family="Update versions"
+            oldString="2.7.0"
+            replacement="2.9.1"
+            priority="0"/>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="61"
+            column="20"
+            startOffset="1720"
+            endLine="61"
+            endColumn="68"
+            endOffset="1768"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.lifecycle:lifecycle-viewmodel-compose than 2.7.0 is available: 2.9.1">
+        <fix-replace
+            description="Change to 2.9.1"
+            family="Update versions"
+            oldString="2.7.0"
+            replacement="2.9.1"
+            priority="0"/>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="62"
+            column="20"
+            startOffset="1789"
+            endLine="62"
+            endColumn="74"
+            endOffset="1843"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.room:room-runtime than 2.6.1 is available: 2.7.2">
+        <fix-replace
+            description="Change to 2.7.2"
+            family="Update versions"
+            oldString="2.6.1"
+            replacement="2.7.2"
+            priority="0"/>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="63"
+            column="20"
+            startOffset="1864"
+            endLine="63"
+            endColumn="54"
+            endOffset="1898"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.room:room-ktx than 2.6.1 is available: 2.7.2">
+        <fix-replace
+            description="Change to 2.7.2"
+            family="Update versions"
+            oldString="2.6.1"
+            replacement="2.7.2"
+            priority="0"/>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="64"
+            column="20"
+            startOffset="1919"
+            endLine="64"
+            endColumn="50"
+            endOffset="1949"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.room:room-compiler than 2.6.1 is available: 2.7.2">
+        <fix-replace
+            description="Change to 2.7.2"
+            family="Update versions"
+            oldString="2.6.1"
+            replacement="2.7.2"
+            priority="0"/>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="65"
+            column="9"
+            startOffset="1959"
+            endLine="65"
+            endColumn="44"
+            endOffset="1994"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.activity:activity-compose than 1.8.2 is available: 1.10.1">
+        <fix-replace
+            description="Change to 1.10.1"
+            family="Update versions"
+            oldString="1.8.2"
+            replacement="1.10.1"
+            priority="0"/>
+        <location
+            file="$HOME/Documents/simple_note/SimpleNoteApp/gradle/libs.versions.toml"
+            line="2"
+            column="19"
+            startOffset="29"
+            endLine="2"
+            endColumn="26"
+            endOffset="36"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of com.google.gms.google-services than 4.4.1 is available: 4.4.3">
+        <fix-replace
+            description="Change to 4.4.3"
+            family="Update versions"
+            oldString="4.4.1"
+            replacement="4.4.3"
+            priority="0"/>
+        <location
+            file="$HOME/Documents/simple_note/SimpleNoteApp/gradle/libs.versions.toml"
+            line="3"
+            column="18"
+            startOffset="54"
+            endLine="3"
+            endColumn="25"
+            endOffset="61"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.navigation:navigation-compose than 2.7.7 is available: 2.9.1">
+        <fix-replace
+            description="Change to 2.9.1"
+            family="Update versions"
+            oldString="2.7.7"
+            replacement="2.9.1"
+            priority="0"/>
+        <location
+            file="$HOME/Documents/simple_note/SimpleNoteApp/gradle/libs.versions.toml"
+            line="4"
+            column="21"
+            startOffset="82"
+            endLine="4"
+            endColumn="28"
+            endOffset="89"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.room:room-compiler than 2.6.1 is available: 2.7.2">
+        <fix-replace
+            description="Change to 2.7.2"
+            family="Update versions"
+            oldString="2.6.1"
+            replacement="2.7.2"
+            priority="0"/>
+        <location
+            file="$HOME/Documents/simple_note/SimpleNoteApp/gradle/libs.versions.toml"
+            line="5"
+            column="8"
+            startOffset="97"
+            endLine="5"
+            endColumn="15"
+            endOffset="104"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.room:room-ktx than 2.6.1 is available: 2.7.2">
+        <fix-replace
+            description="Change to 2.7.2"
+            family="Update versions"
+            oldString="2.6.1"
+            replacement="2.7.2"
+            priority="0"/>
+        <location
+            file="$HOME/Documents/simple_note/SimpleNoteApp/gradle/libs.versions.toml"
+            line="5"
+            column="8"
+            startOffset="97"
+            endLine="5"
+            endColumn="15"
+            endOffset="104"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.room:room-runtime than 2.6.1 is available: 2.7.2">
+        <fix-replace
+            description="Change to 2.7.2"
+            family="Update versions"
+            oldString="2.6.1"
+            replacement="2.7.2"
+            priority="0"/>
+        <location
+            file="$HOME/Documents/simple_note/SimpleNoteApp/gradle/libs.versions.toml"
+            line="5"
+            column="8"
+            startOffset="97"
+            endLine="5"
+            endColumn="15"
+            endOffset="104"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.compose:compose-bom than 2024.02.01 is available: 2025.06.01">
+        <fix-replace
+            description="Change to 2025.06.01"
+            family="Update versions"
+            oldString="2024.02.01"
+            replacement="2025.06.01"
+            priority="0"/>
+        <location
+            file="$HOME/Documents/simple_note/SimpleNoteApp/gradle/libs.versions.toml"
+            line="8"
+            column="14"
+            startOffset="171"
+            endLine="8"
+            endColumn="26"
+            endOffset="183"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.core:core-ktx than 1.12.0 is available: 1.16.0">
+        <fix-replace
+            description="Change to 1.16.0"
+            family="Update versions"
+            oldString="1.12.0"
+            replacement="1.16.0"
+            priority="0"/>
+        <location
+            file="$HOME/Documents/simple_note/SimpleNoteApp/gradle/libs.versions.toml"
+            line="9"
+            column="11"
+            startOffset="194"
+            endLine="9"
+            endColumn="19"
+            endOffset="202"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.test.espresso:espresso-core than 3.5.1 is available: 3.6.1">
+        <fix-replace
+            description="Change to 3.6.1"
+            family="Update versions"
+            oldString="3.5.1"
+            replacement="3.6.1"
+            priority="0"/>
+        <location
+            file="$HOME/Documents/simple_note/SimpleNoteApp/gradle/libs.versions.toml"
+            line="10"
+            column="16"
+            startOffset="218"
+            endLine="10"
+            endColumn="23"
+            endOffset="225"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.test.ext:junit than 1.1.5 is available: 1.2.1">
+        <fix-replace
+            description="Change to 1.2.1"
+            family="Update versions"
+            oldString="1.1.5"
+            replacement="1.2.1"
+            priority="0"/>
+        <location
+            file="$HOME/Documents/simple_note/SimpleNoteApp/gradle/libs.versions.toml"
+            line="12"
+            column="16"
+            startOffset="258"
+            endLine="12"
+            endColumn="23"
+            endOffset="265"/>
+    </incident>
+
+    <incident
+        id="GradleDependency"
+        severity="warning"
+        message="A newer version of androidx.lifecycle:lifecycle-runtime-ktx than 2.7.0 is available: 2.9.1">
+        <fix-replace
+            description="Change to 2.9.1"
+            family="Update versions"
+            oldString="2.7.0"
+            replacement="2.9.1"
+            priority="0"/>
+        <location
+            file="$HOME/Documents/simple_note/SimpleNoteApp/gradle/libs.versions.toml"
+            line="14"
+            column="23"
+            startOffset="306"
+            endLine="14"
+            endColumn="30"
+            endOffset="313"/>
+    </incident>
+
+    <incident
+        id="NewerVersionAvailable"
+        severity="warning"
+        message="A newer version of org.jetbrains.kotlin.plugin.serialization than 1.9.22 is available: 2.2.0">
+        <fix-replace
+            description="Change to 2.2.0"
+            family="Update versions"
+            oldString="1.9.22"
+            replacement="2.2.0"
+            priority="0"/>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="6"
+            column="61"
+            startOffset="218"
+            endLine="6"
+            endColumn="69"
+            endOffset="226"/>
+    </incident>
+
+    <incident
+        id="NewerVersionAvailable"
+        severity="warning"
+        message="A newer version of io.ktor:ktor-client-android than 2.3.8 is available: 3.2.1">
+        <fix-replace
+            description="Change to 3.2.1"
+            family="Update versions"
+            oldString="2.3.8"
+            replacement="3.2.1"
+            priority="0"/>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="69"
+            column="20"
+            startOffset="2112"
+            endLine="69"
+            endColumn="55"
+            endOffset="2147"/>
+    </incident>
+
+    <incident
+        id="NewerVersionAvailable"
+        severity="warning"
+        message="A newer version of io.ktor:ktor-client-content-negotiation than 2.3.8 is available: 3.2.1">
+        <fix-replace
+            description="Change to 3.2.1"
+            family="Update versions"
+            oldString="2.3.8"
+            replacement="3.2.1"
+            priority="0"/>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="70"
+            column="20"
+            startOffset="2168"
+            endLine="70"
+            endColumn="67"
+            endOffset="2215"/>
+    </incident>
+
+    <incident
+        id="NewerVersionAvailable"
+        severity="warning"
+        message="A newer version of io.ktor:ktor-serialization-kotlinx-json than 2.3.8 is available: 3.2.1">
+        <fix-replace
+            description="Change to 3.2.1"
+            family="Update versions"
+            oldString="2.3.8"
+            replacement="3.2.1"
+            priority="0"/>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="71"
+            column="20"
+            startOffset="2236"
+            endLine="71"
+            endColumn="67"
+            endOffset="2283"/>
+    </incident>
+
+    <incident
+        id="NewerVersionAvailable"
+        severity="warning"
+        message="A newer version of org.jetbrains.kotlinx:kotlinx-serialization-json than 1.6.2 is available: 1.9.0">
+        <fix-replace
+            description="Change to 1.9.0"
+            family="Update versions"
+            oldString="1.6.2"
+            replacement="1.9.0"
+            priority="0"/>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="72"
+            column="20"
+            startOffset="2304"
+            endLine="72"
+            endColumn="76"
+            endOffset="2360"/>
+    </incident>
+
+    <incident
+        id="NewerVersionAvailable"
+        severity="warning"
+        message="A newer version of org.jetbrains.kotlin.android than 1.9.22 is available: 2.2.0">
+        <fix-replace
+            description="Change to 2.2.0"
+            family="Update versions"
+            oldString="1.9.22"
+            replacement="2.2.0"
+            priority="0"/>
+        <location
+            file="$HOME/Documents/simple_note/SimpleNoteApp/gradle/libs.versions.toml"
+            line="13"
+            column="10"
+            startOffset="275"
+            endLine="13"
+            endColumn="18"
+            endOffset="283"/>
+    </incident>
+
+    <incident
+        id="MonochromeLauncherIcon"
+        severity="warning"
+        message="The application adaptive icon is missing a monochrome tag">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/mipmap-anydpi-v26/ic_launcher.xml"
+            line="2"
+            column="1"
+            startOffset="39"
+            endLine="5"
+            endColumn="17"
+            endOffset="270"/>
+    </incident>
+
+    <incident
+        id="MonochromeLauncherIcon"
+        severity="warning"
+        message="The application adaptive roundIcon is missing a monochrome tag">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/mipmap-anydpi-v26/ic_launcher_round.xml"
+            line="2"
+            column="1"
+            startOffset="39"
+            endLine="5"
+            endColumn="17"
+            endOffset="270"/>
+    </incident>
+
+    <incident
+        id="UseTomlInstead"
+        severity="warning"
+        message="Use version catalog instead">
+        <fix-composite
+            description="Replace with new library catalog declaration for com-google-firebase-firebase-bom4"
+            robot="true">
+            <fix-replace
+                description="Replace with comGoogleFirebaseFirebaseBom2 = &quot;33.0.0&quot;..."
+                robot="true"
+                oldString="_lint_insert_begin_"
+                replacement="comGoogleFirebaseFirebaseBom2 = &quot;33.0.0&quot;&#xA;"
+                priority="0">
+                <range
+                    file="$HOME/Documents/simple_note/SimpleNoteApp/gradle/libs.versions.toml"
+                    startOffset="37"
+                    endOffset="37"/>
+            </fix-replace>
+            <fix-replace
+                description="Replace with com-google-firebase-firebase-bom4 = { module = &quot;com.google.firebase:firebase-bom&quot;, version.ref = &quot;comGoogleFirebaseFirebaseBom2&quot; }..."
+                robot="true"
+                oldString="_lint_insert_begin_"
+                replacement="com-google-firebase-firebase-bom4 = { module = &quot;com.google.firebase:firebase-bom&quot;, version.ref = &quot;comGoogleFirebaseFirebaseBom2&quot; }&#xA;"
+                priority="0">
+                <range
+                    file="$HOME/Documents/simple_note/SimpleNoteApp/gradle/libs.versions.toml"
+                    startOffset="1959"
+                    endOffset="1959"/>
+            </fix-replace>
+            <fix-replace
+                description="Replace with libs.com.google.firebase.firebase.bom4"
+                robot="true"
+                replacement="libs.com.google.firebase.firebase.bom4"
+                priority="0">
+                <range
+                    file="${:app*projectDir}/build.gradle.kts"
+                    startOffset="1290"
+                    endOffset="1341"/>
+            </fix-replace>
+        </fix-composite>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="54"
+            column="20"
+            startOffset="1290"
+            endLine="54"
+            endColumn="71"
+            endOffset="1341"/>
+    </incident>
+
+    <incident
+        id="UseTomlInstead"
+        severity="warning"
+        message="Use version catalog instead (androidx.compose:compose-bom is already available as `androidx-compose-bom`, but using version 2024.02.01 instead)">
+        <fix-alternatives>
+            <fix-composite
+                description="Replace with new library catalog declaration for androidx-compose-compose-bom-v20230800-x4"
+                robot="true"
+                independent="true">
+                <fix-replace
+                    description="Replace with androidxComposeComposeBom3 = &quot;2023.08.00&quot;..."
+                    robot="true"
+                    independent="true"
+                    oldString="_lint_insert_begin_"
+                    replacement="androidxComposeComposeBom3 = &quot;2023.08.00&quot;&#xA;"
+                    priority="0">
+                    <range
+                        file="$HOME/Documents/simple_note/SimpleNoteApp/gradle/libs.versions.toml"
+                        startOffset="37"
+                        endOffset="37"/>
+                </fix-replace>
+                <fix-replace
+                    description="Replace with androidx-compose-compose-bom-v20230800-x4 = { module = &quot;androidx.compose:compose-bom&quot;, version.ref = &quot;androidxComposeComposeBom3&quot; }..."
+                    robot="true"
+                    independent="true"
+                    oldString="_lint_insert_begin_"
+                    replacement="androidx-compose-compose-bom-v20230800-x4 = { module = &quot;androidx.compose:compose-bom&quot;, version.ref = &quot;androidxComposeComposeBom3&quot; }&#xA;"
+                    priority="0">
+                    <range
+                        file="$HOME/Documents/simple_note/SimpleNoteApp/gradle/libs.versions.toml"
+                        startOffset="542"
+                        endOffset="542"/>
+                </fix-replace>
+                <fix-replace
+                    description="Replace with libs.androidx.compose.compose.bom.v20230800.x4"
+                    robot="true"
+                    independent="true"
+                    replacement="libs.androidx.compose.compose.bom.v20230800.x4"
+                    priority="0">
+                    <range
+                        file="${:app*projectDir}/build.gradle.kts"
+                        startOffset="1362"
+                        endOffset="1413"/>
+                </fix-replace>
+            </fix-composite>
+            <fix-replace
+                description="Replace with existing version catalog reference `androidx-compose-bom` (version 2024.02.01)"
+                replacement="libs.androidx.compose.bom"
+                priority="0">
+                <range
+                    file="${:app*projectDir}/build.gradle.kts"
+                    startOffset="1362"
+                    endOffset="1413"/>
+            </fix-replace>
+        </fix-alternatives>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="55"
+            column="20"
+            startOffset="1362"
+            endLine="55"
+            endColumn="71"
+            endOffset="1413"/>
+    </incident>
+
+    <incident
+        id="UseTomlInstead"
+        severity="warning"
+        message="Use version catalog instead">
+        <fix-composite
+            description="Replace with new library catalog declaration for androidx-compose-ui-ui5"
+            robot="true">
+            <fix-replace
+                description="Replace with androidx-compose-ui-ui5 = { module = &quot;androidx.compose.ui:ui&quot; }..."
+                robot="true"
+                oldString="_lint_insert_begin_"
+                replacement="androidx-compose-ui-ui5 = { module = &quot;androidx.compose.ui:ui&quot; }&#xA;"
+                priority="0">
+                <range
+                    file="$HOME/Documents/simple_note/SimpleNoteApp/gradle/libs.versions.toml"
+                    startOffset="542"
+                    endOffset="542"/>
+            </fix-replace>
+            <fix-replace
+                description="Replace with libs.androidx.compose.ui.ui5"
+                robot="true"
+                replacement="libs.androidx.compose.ui.ui5"
+                priority="0">
+                <range
+                    file="${:app*projectDir}/build.gradle.kts"
+                    startOffset="1434"
+                    endOffset="1458"/>
+            </fix-replace>
+        </fix-composite>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="56"
+            column="20"
+            startOffset="1434"
+            endLine="56"
+            endColumn="44"
+            endOffset="1458"/>
+    </incident>
+
+    <incident
+        id="UseTomlInstead"
+        severity="warning"
+        message="Use version catalog instead">
+        <fix-composite
+            description="Replace with new library catalog declaration for androidx-compose-ui-ui-graphics5"
+            robot="true">
+            <fix-replace
+                description="Replace with androidx-compose-ui-ui-graphics5 = { module = &quot;androidx.compose.ui:ui-graphics&quot; }..."
+                robot="true"
+                oldString="_lint_insert_begin_"
+                replacement="androidx-compose-ui-ui-graphics5 = { module = &quot;androidx.compose.ui:ui-graphics&quot; }&#xA;"
+                priority="0">
+                <range
+                    file="$HOME/Documents/simple_note/SimpleNoteApp/gradle/libs.versions.toml"
+                    startOffset="542"
+                    endOffset="542"/>
+            </fix-replace>
+            <fix-replace
+                description="Replace with libs.androidx.compose.ui.ui.graphics5"
+                robot="true"
+                replacement="libs.androidx.compose.ui.ui.graphics5"
+                priority="0">
+                <range
+                    file="${:app*projectDir}/build.gradle.kts"
+                    startOffset="1479"
+                    endOffset="1512"/>
+            </fix-replace>
+        </fix-composite>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="57"
+            column="20"
+            startOffset="1479"
+            endLine="57"
+            endColumn="53"
+            endOffset="1512"/>
+    </incident>
+
+    <incident
+        id="UseTomlInstead"
+        severity="warning"
+        message="Use version catalog instead">
+        <fix-composite
+            description="Replace with new library catalog declaration for androidx-compose-ui-ui-tooling-preview5"
+            robot="true">
+            <fix-replace
+                description="Replace with androidx-compose-ui-ui-tooling-preview5 = { module = &quot;androidx.compose.ui:ui-tooling-preview&quot; }..."
+                robot="true"
+                oldString="_lint_insert_begin_"
+                replacement="androidx-compose-ui-ui-tooling-preview5 = { module = &quot;androidx.compose.ui:ui-tooling-preview&quot; }&#xA;"
+                priority="0">
+                <range
+                    file="$HOME/Documents/simple_note/SimpleNoteApp/gradle/libs.versions.toml"
+                    startOffset="542"
+                    endOffset="542"/>
+            </fix-replace>
+            <fix-replace
+                description="Replace with libs.androidx.compose.ui.ui.tooling.preview5"
+                robot="true"
+                replacement="libs.androidx.compose.ui.ui.tooling.preview5"
+                priority="0">
+                <range
+                    file="${:app*projectDir}/build.gradle.kts"
+                    startOffset="1533"
+                    endOffset="1573"/>
+            </fix-replace>
+        </fix-composite>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="58"
+            column="20"
+            startOffset="1533"
+            endLine="58"
+            endColumn="60"
+            endOffset="1573"/>
+    </incident>
+
+    <incident
+        id="UseTomlInstead"
+        severity="warning"
+        message="Use version catalog instead">
+        <fix-composite
+            description="Replace with new library catalog declaration for androidx-compose-material3-material35"
+            robot="true">
+            <fix-replace
+                description="Replace with androidx-compose-material3-material35 = { module = &quot;androidx.compose.material3:material3&quot; }..."
+                robot="true"
+                oldString="_lint_insert_begin_"
+                replacement="androidx-compose-material3-material35 = { module = &quot;androidx.compose.material3:material3&quot; }&#xA;"
+                priority="0">
+                <range
+                    file="$HOME/Documents/simple_note/SimpleNoteApp/gradle/libs.versions.toml"
+                    startOffset="542"
+                    endOffset="542"/>
+            </fix-replace>
+            <fix-replace
+                description="Replace with libs.androidx.compose.material3.material35"
+                robot="true"
+                replacement="libs.androidx.compose.material3.material35"
+                priority="0">
+                <range
+                    file="${:app*projectDir}/build.gradle.kts"
+                    startOffset="1594"
+                    endOffset="1632"/>
+            </fix-replace>
+        </fix-composite>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="59"
+            column="20"
+            startOffset="1594"
+            endLine="59"
+            endColumn="58"
+            endOffset="1632"/>
+    </incident>
+
+    <incident
+        id="UseTomlInstead"
+        severity="warning"
+        message="Use the existing version catalog reference (`libs.androidx.navigation.compose`) instead">
+        <fix-replace
+            description="Replace with existing version catalog reference `androidx-navigation-compose`"
+            robot="true"
+            independent="true"
+            replacement="libs.androidx.navigation.compose"
+            priority="0">
+            <range
+                file="${:app*projectDir}/build.gradle.kts"
+                startOffset="1653"
+                endOffset="1699"/>
+        </fix-replace>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="60"
+            column="20"
+            startOffset="1653"
+            endLine="60"
+            endColumn="66"
+            endOffset="1699"/>
+    </incident>
+
+    <incident
+        id="UseTomlInstead"
+        severity="warning"
+        message="Use the existing version catalog reference (`libs.androidx.lifecycle.runtime.ktx`) instead">
+        <fix-replace
+            description="Replace with existing version catalog reference `androidx-lifecycle-runtime-ktx`"
+            robot="true"
+            independent="true"
+            replacement="libs.androidx.lifecycle.runtime.ktx"
+            priority="0">
+            <range
+                file="${:app*projectDir}/build.gradle.kts"
+                startOffset="1720"
+                endOffset="1768"/>
+        </fix-replace>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="61"
+            column="20"
+            startOffset="1720"
+            endLine="61"
+            endColumn="68"
+            endOffset="1768"/>
+    </incident>
+
+    <incident
+        id="UseTomlInstead"
+        severity="warning"
+        message="Use version catalog instead">
+        <fix-alternatives>
+            <fix-composite
+                description="Replace with new library catalog declaration, reusing version variable lifecycleRuntimeKtx"
+                robot="true"
+                independent="true">
+                <fix-replace
+                    description="Replace with androidx-lifecycle-lifecycle-viewmodel-compose9 = { module = &quot;androidx.lifecycle:lifecycle-viewmodel-compose&quot;, version.ref = &quot;lifecycleRuntimeKtx&quot; }..."
+                    robot="true"
+                    independent="true"
+                    oldString="_lint_insert_begin_"
+                    replacement="androidx-lifecycle-lifecycle-viewmodel-compose9 = { module = &quot;androidx.lifecycle:lifecycle-viewmodel-compose&quot;, version.ref = &quot;lifecycleRuntimeKtx&quot; }&#xA;"
+                    priority="0">
+                    <range
+                        file="$HOME/Documents/simple_note/SimpleNoteApp/gradle/libs.versions.toml"
+                        startOffset="845"
+                        endOffset="845"/>
+                </fix-replace>
+                <fix-replace
+                    description="Replace with libs.androidx.lifecycle.lifecycle.viewmodel.compose9"
+                    robot="true"
+                    independent="true"
+                    replacement="libs.androidx.lifecycle.lifecycle.viewmodel.compose9"
+                    priority="0">
+                    <range
+                        file="${:app*projectDir}/build.gradle.kts"
+                        startOffset="1789"
+                        endOffset="1843"/>
+                </fix-replace>
+            </fix-composite>
+            <fix-composite
+                description="Replace with new library catalog declaration for androidx-lifecycle-lifecycle-viewmodel-compose10"
+                robot="true">
+                <fix-replace
+                    description="Replace with androidxLifecycleLifecycleViewmodelCompose2 = &quot;2.7.0&quot;..."
+                    robot="true"
+                    oldString="_lint_insert_begin_"
+                    replacement="androidxLifecycleLifecycleViewmodelCompose2 = &quot;2.7.0&quot;&#xA;"
+                    priority="0">
+                    <range
+                        file="$HOME/Documents/simple_note/SimpleNoteApp/gradle/libs.versions.toml"
+                        startOffset="37"
+                        endOffset="37"/>
+                </fix-replace>
+                <fix-replace
+                    description="Replace with androidx-lifecycle-lifecycle-viewmodel-compose10 = { module = &quot;androidx.lifecycle:lifecycle-viewmodel-compose&quot;, version.ref = &quot;androidxLifecycleLifecycleViewmodelCompose2&quot; }..."
+                    robot="true"
+                    oldString="_lint_insert_begin_"
+                    replacement="androidx-lifecycle-lifecycle-viewmodel-compose10 = { module = &quot;androidx.lifecycle:lifecycle-viewmodel-compose&quot;, version.ref = &quot;androidxLifecycleLifecycleViewmodelCompose2&quot; }&#xA;"
+                    priority="0">
+                    <range
+                        file="$HOME/Documents/simple_note/SimpleNoteApp/gradle/libs.versions.toml"
+                        startOffset="845"
+                        endOffset="845"/>
+                </fix-replace>
+                <fix-replace
+                    description="Replace with libs.androidx.lifecycle.lifecycle.viewmodel.compose10"
+                    robot="true"
+                    replacement="libs.androidx.lifecycle.lifecycle.viewmodel.compose10"
+                    priority="0">
+                    <range
+                        file="${:app*projectDir}/build.gradle.kts"
+                        startOffset="1789"
+                        endOffset="1843"/>
+                </fix-replace>
+            </fix-composite>
+        </fix-alternatives>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="62"
+            column="20"
+            startOffset="1789"
+            endLine="62"
+            endColumn="74"
+            endOffset="1843"/>
+    </incident>
+
+    <incident
+        id="UseTomlInstead"
+        severity="warning"
+        message="Use the existing version catalog reference (`libs.androidx.room.runtime`) instead">
+        <fix-replace
+            description="Replace with existing version catalog reference `androidx-room-runtime`"
+            robot="true"
+            independent="true"
+            replacement="libs.androidx.room.runtime"
+            priority="0">
+            <range
+                file="${:app*projectDir}/build.gradle.kts"
+                startOffset="1864"
+                endOffset="1898"/>
+        </fix-replace>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="63"
+            column="20"
+            startOffset="1864"
+            endLine="63"
+            endColumn="54"
+            endOffset="1898"/>
+    </incident>
+
+    <incident
+        id="UseTomlInstead"
+        severity="warning"
+        message="Use the existing version catalog reference (`libs.androidx.room.ktx`) instead">
+        <fix-replace
+            description="Replace with existing version catalog reference `androidx-room-ktx`"
+            robot="true"
+            independent="true"
+            replacement="libs.androidx.room.ktx"
+            priority="0">
+            <range
+                file="${:app*projectDir}/build.gradle.kts"
+                startOffset="1919"
+                endOffset="1949"/>
+        </fix-replace>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="64"
+            column="20"
+            startOffset="1919"
+            endLine="64"
+            endColumn="50"
+            endOffset="1949"/>
+    </incident>
+
+    <incident
+        id="UseTomlInstead"
+        severity="warning"
+        message="Use the existing version catalog reference (`libs.androidx.room.compiler`) instead">
+        <fix-replace
+            description="Replace with existing version catalog reference `androidx-room-compiler`"
+            robot="true"
+            independent="true"
+            replacement="libs.androidx.room.compiler"
+            priority="0">
+            <range
+                file="${:app*projectDir}/build.gradle.kts"
+                startOffset="1959"
+                endOffset="1994"/>
+        </fix-replace>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="65"
+            column="9"
+            startOffset="1959"
+            endLine="65"
+            endColumn="44"
+            endOffset="1994"/>
+    </incident>
+
+    <incident
+        id="UseTomlInstead"
+        severity="warning"
+        message="Use version catalog instead">
+        <fix-composite
+            description="Replace with new library catalog declaration for com-google-firebase-firebase-auth-ktx4"
+            robot="true">
+            <fix-replace
+                description="Replace with com-google-firebase-firebase-auth-ktx4 = { module = &quot;com.google.firebase:firebase-auth-ktx&quot; }..."
+                robot="true"
+                oldString="_lint_insert_begin_"
+                replacement="com-google-firebase-firebase-auth-ktx4 = { module = &quot;com.google.firebase:firebase-auth-ktx&quot; }&#xA;"
+                priority="0">
+                <range
+                    file="$HOME/Documents/simple_note/SimpleNoteApp/gradle/libs.versions.toml"
+                    startOffset="1959"
+                    endOffset="1959"/>
+            </fix-replace>
+            <fix-replace
+                description="Replace with libs.com.google.firebase.firebase.auth.ktx4"
+                robot="true"
+                replacement="libs.com.google.firebase.firebase.auth.ktx4"
+                priority="0">
+                <range
+                    file="${:app*projectDir}/build.gradle.kts"
+                    startOffset="2015"
+                    endOffset="2054"/>
+            </fix-replace>
+        </fix-composite>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="66"
+            column="20"
+            startOffset="2015"
+            endLine="66"
+            endColumn="59"
+            endOffset="2054"/>
+    </incident>
+
+    <incident
+        id="UseTomlInstead"
+        severity="warning"
+        message="Use version catalog instead">
+        <fix-composite
+            description="Replace with new library catalog declaration for io-ktor-ktor-client-android4"
+            robot="true">
+            <fix-replace
+                description="Replace with ioKtorKtorClientAndroid2 = &quot;2.3.8&quot;..."
+                robot="true"
+                oldString="_lint_insert_begin_"
+                replacement="ioKtorKtorClientAndroid2 = &quot;2.3.8&quot;&#xA;"
+                priority="0">
+                <range
+                    file="$HOME/Documents/simple_note/SimpleNoteApp/gradle/libs.versions.toml"
+                    startOffset="62"
+                    endOffset="62"/>
+            </fix-replace>
+            <fix-replace
+                description="Replace with io-ktor-ktor-client-android4 = { module = &quot;io.ktor:ktor-client-android&quot;, version.ref = &quot;ioKtorKtorClientAndroid2&quot; }..."
+                robot="true"
+                oldString="_lint_insert_begin_"
+                replacement="io-ktor-ktor-client-android4 = { module = &quot;io.ktor:ktor-client-android&quot;, version.ref = &quot;ioKtorKtorClientAndroid2&quot; }&#xA;"
+                priority="0">
+                <range
+                    file="$HOME/Documents/simple_note/SimpleNoteApp/gradle/libs.versions.toml"
+                    startOffset="1959"
+                    endOffset="1959"/>
+            </fix-replace>
+            <fix-replace
+                description="Replace with libs.io.ktor.ktor.client.android4"
+                robot="true"
+                replacement="libs.io.ktor.ktor.client.android4"
+                priority="0">
+                <range
+                    file="${:app*projectDir}/build.gradle.kts"
+                    startOffset="2112"
+                    endOffset="2147"/>
+            </fix-replace>
+        </fix-composite>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="69"
+            column="20"
+            startOffset="2112"
+            endLine="69"
+            endColumn="55"
+            endOffset="2147"/>
+    </incident>
+
+    <incident
+        id="UseTomlInstead"
+        severity="warning"
+        message="Use version catalog instead">
+        <fix-composite
+            description="Replace with new library catalog declaration for io-ktor-ktor-client-content-negotiation4"
+            robot="true">
+            <fix-replace
+                description="Replace with ioKtorKtorClientContentNegotiation2 = &quot;2.3.8&quot;..."
+                robot="true"
+                oldString="_lint_insert_begin_"
+                replacement="ioKtorKtorClientContentNegotiation2 = &quot;2.3.8&quot;&#xA;"
+                priority="0">
+                <range
+                    file="$HOME/Documents/simple_note/SimpleNoteApp/gradle/libs.versions.toml"
+                    startOffset="62"
+                    endOffset="62"/>
+            </fix-replace>
+            <fix-replace
+                description="Replace with io-ktor-ktor-client-content-negotiation4 = { module = &quot;io.ktor:ktor-client-content-negotiation&quot;, version.ref = &quot;ioKtorKtorClientContentNegotiation2&quot; }..."
+                robot="true"
+                oldString="_lint_insert_begin_"
+                replacement="io-ktor-ktor-client-content-negotiation4 = { module = &quot;io.ktor:ktor-client-content-negotiation&quot;, version.ref = &quot;ioKtorKtorClientContentNegotiation2&quot; }&#xA;"
+                priority="0">
+                <range
+                    file="$HOME/Documents/simple_note/SimpleNoteApp/gradle/libs.versions.toml"
+                    startOffset="1959"
+                    endOffset="1959"/>
+            </fix-replace>
+            <fix-replace
+                description="Replace with libs.io.ktor.ktor.client.content.negotiation4"
+                robot="true"
+                replacement="libs.io.ktor.ktor.client.content.negotiation4"
+                priority="0">
+                <range
+                    file="${:app*projectDir}/build.gradle.kts"
+                    startOffset="2168"
+                    endOffset="2215"/>
+            </fix-replace>
+        </fix-composite>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="70"
+            column="20"
+            startOffset="2168"
+            endLine="70"
+            endColumn="67"
+            endOffset="2215"/>
+    </incident>
+
+    <incident
+        id="UseTomlInstead"
+        severity="warning"
+        message="Use version catalog instead">
+        <fix-composite
+            description="Replace with new library catalog declaration for io-ktor-ktor-serialization-kotlinx-json4"
+            robot="true">
+            <fix-replace
+                description="Replace with ioKtorKtorSerializationKotlinxJson2 = &quot;2.3.8&quot;..."
+                robot="true"
+                oldString="_lint_insert_begin_"
+                replacement="ioKtorKtorSerializationKotlinxJson2 = &quot;2.3.8&quot;&#xA;"
+                priority="0">
+                <range
+                    file="$HOME/Documents/simple_note/SimpleNoteApp/gradle/libs.versions.toml"
+                    startOffset="62"
+                    endOffset="62"/>
+            </fix-replace>
+            <fix-replace
+                description="Replace with io-ktor-ktor-serialization-kotlinx-json4 = { module = &quot;io.ktor:ktor-serialization-kotlinx-json&quot;, version.ref = &quot;ioKtorKtorSerializationKotlinxJson2&quot; }..."
+                robot="true"
+                oldString="_lint_insert_begin_"
+                replacement="io-ktor-ktor-serialization-kotlinx-json4 = { module = &quot;io.ktor:ktor-serialization-kotlinx-json&quot;, version.ref = &quot;ioKtorKtorSerializationKotlinxJson2&quot; }&#xA;"
+                priority="0">
+                <range
+                    file="$HOME/Documents/simple_note/SimpleNoteApp/gradle/libs.versions.toml"
+                    startOffset="1959"
+                    endOffset="1959"/>
+            </fix-replace>
+            <fix-replace
+                description="Replace with libs.io.ktor.ktor.serialization.kotlinx.json4"
+                robot="true"
+                replacement="libs.io.ktor.ktor.serialization.kotlinx.json4"
+                priority="0">
+                <range
+                    file="${:app*projectDir}/build.gradle.kts"
+                    startOffset="2236"
+                    endOffset="2283"/>
+            </fix-replace>
+        </fix-composite>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="71"
+            column="20"
+            startOffset="2236"
+            endLine="71"
+            endColumn="67"
+            endOffset="2283"/>
+    </incident>
+
+    <incident
+        id="UseTomlInstead"
+        severity="warning"
+        message="Use version catalog instead">
+        <fix-composite
+            description="Replace with new library catalog declaration for org-jetbrains-kotlinx-kotlinx-serialization-json4"
+            robot="true">
+            <fix-replace
+                description="Replace with orgJetbrainsKotlinxKotlinxSerializationJson2 = &quot;1.6.2&quot;..."
+                robot="true"
+                oldString="_lint_insert_begin_"
+                replacement="orgJetbrainsKotlinxKotlinxSerializationJson2 = &quot;1.6.2&quot;&#xA;"
+                priority="0">
+                <range
+                    file="$HOME/Documents/simple_note/SimpleNoteApp/gradle/libs.versions.toml"
+                    startOffset="90"
+                    endOffset="90"/>
+            </fix-replace>
+            <fix-replace
+                description="Replace with org-jetbrains-kotlinx-kotlinx-serialization-json4 = { module = &quot;org.jetbrains.kotlinx:kotlinx-serialization-json&quot;, version.ref = &quot;orgJetbrainsKotlinxKotlinxSerializationJson2&quot; }..."
+                robot="true"
+                oldString="_lint_insert_begin_"
+                replacement="org-jetbrains-kotlinx-kotlinx-serialization-json4 = { module = &quot;org.jetbrains.kotlinx:kotlinx-serialization-json&quot;, version.ref = &quot;orgJetbrainsKotlinxKotlinxSerializationJson2&quot; }&#xA;"
+                priority="0">
+                <range
+                    file="$HOME/Documents/simple_note/SimpleNoteApp/gradle/libs.versions.toml"
+                    startOffset="2026"
+                    endOffset="2026"/>
+            </fix-replace>
+            <fix-replace
+                description="Replace with libs.org.jetbrains.kotlinx.kotlinx.serialization.json4"
+                robot="true"
+                replacement="libs.org.jetbrains.kotlinx.kotlinx.serialization.json4"
+                priority="0">
+                <range
+                    file="${:app*projectDir}/build.gradle.kts"
+                    startOffset="2304"
+                    endOffset="2360"/>
+            </fix-replace>
+        </fix-composite>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="72"
+            column="20"
+            startOffset="2304"
+            endLine="72"
+            endColumn="76"
+            endOffset="2360"/>
+    </incident>
+
+    <incident
+        id="UseTomlInstead"
+        severity="warning"
+        message="Use version catalog instead">
+        <fix-composite
+            description="Replace with new library catalog declaration for androidx-compose-ui-ui-tooling5"
+            robot="true">
+            <fix-replace
+                description="Replace with androidx-compose-ui-ui-tooling5 = { module = &quot;androidx.compose.ui:ui-tooling&quot; }..."
+                robot="true"
+                oldString="_lint_insert_begin_"
+                replacement="androidx-compose-ui-ui-tooling5 = { module = &quot;androidx.compose.ui:ui-tooling&quot; }&#xA;"
+                priority="0">
+                <range
+                    file="$HOME/Documents/simple_note/SimpleNoteApp/gradle/libs.versions.toml"
+                    startOffset="542"
+                    endOffset="542"/>
+            </fix-replace>
+            <fix-replace
+                description="Replace with libs.androidx.compose.ui.ui.tooling5"
+                robot="true"
+                replacement="libs.androidx.compose.ui.ui.tooling5"
+                priority="0">
+                <range
+                    file="${:app*projectDir}/build.gradle.kts"
+                    startOffset="2391"
+                    endOffset="2423"/>
+            </fix-replace>
+        </fix-composite>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="74"
+            column="25"
+            startOffset="2391"
+            endLine="74"
+            endColumn="57"
+            endOffset="2423"/>
+    </incident>
+
+    <incident
+        id="UseTomlInstead"
+        severity="warning"
+        message="Use version catalog instead">
+        <fix-composite
+            description="Replace with new library catalog declaration for androidx-compose-ui-ui-test-manifest5"
+            robot="true">
+            <fix-replace
+                description="Replace with androidx-compose-ui-ui-test-manifest5 = { module = &quot;androidx.compose.ui:ui-test-manifest&quot; }..."
+                robot="true"
+                oldString="_lint_insert_begin_"
+                replacement="androidx-compose-ui-ui-test-manifest5 = { module = &quot;androidx.compose.ui:ui-test-manifest&quot; }&#xA;"
+                priority="0">
+                <range
+                    file="$HOME/Documents/simple_note/SimpleNoteApp/gradle/libs.versions.toml"
+                    startOffset="542"
+                    endOffset="542"/>
+            </fix-replace>
+            <fix-replace
+                description="Replace with libs.androidx.compose.ui.ui.test.manifest5"
+                robot="true"
+                replacement="libs.androidx.compose.ui.ui.test.manifest5"
+                priority="0">
+                <range
+                    file="${:app*projectDir}/build.gradle.kts"
+                    startOffset="2449"
+                    endOffset="2487"/>
+            </fix-replace>
+        </fix-composite>
+        <location
+            file="${:app*projectDir}/build.gradle.kts"
+            line="75"
+            column="25"
+            startOffset="2449"
+            endLine="75"
+            endColumn="63"
+            endOffset="2487"/>
+    </incident>
+
+</incidents>

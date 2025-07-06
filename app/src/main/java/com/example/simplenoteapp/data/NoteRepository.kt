@@ -86,7 +86,7 @@ class NoteRepository(
             throw NoteRepositoryException("Cannot delete note with null server ID.")
         }
         try {
-            noteApiService.deleteNote(note.serverId) // Pass serverId to API
+            noteApiService.deleteNote(note.serverId.toString()) // Convert Long to String for API
             Log.d("NoteRepository", "Note deleted via API, server ID: ${note.serverId}")
             noteDao.deleteNoteById(note.id) // Delete by local ID
             Log.d("NoteRepository", "Deleted note from local DB, local ID: ${note.id}")
@@ -116,10 +116,14 @@ class NoteRepository(
 
     suspend fun syncNoteFromCloud(serverId: Long): Note? {
         try {
-            // Use the new single note endpoint for efficiency
-            val cloudNote = noteApiService.getNoteById(serverId)
+            // Since getNoteById doesn't exist in current API, refresh all notes
+            // and find the specific note. This is less efficient but works with current API.
+            refreshNotes()
+            // Find the note with the matching serverId in local DB after refresh
+            val allNotes = noteDao.getAllNotes().firstOrNull() ?: emptyList()
+            val cloudNote = allNotes.find { it.serverId == serverId }
             return if (cloudNote != null) {
-                // Update local note with cloud data
+                // Update local note with sync status
                 val syncedNote = cloudNote.copy(
                     isSynced = true,
                     needsSync = false,

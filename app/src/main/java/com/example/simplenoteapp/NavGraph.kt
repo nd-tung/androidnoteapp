@@ -3,6 +3,7 @@ package com.example.simplenoteapp
 import androidx.compose.material3.DrawerState
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
@@ -20,14 +21,23 @@ import com.example.simplenoteapp.viewmodel.NoteViewModelFactory // Ensure this p
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun NavGraph(app: NoteApplication, navController: NavHostController, drawerState: DrawerState) {
+fun NavGraph(
+    app: NoteApplication, 
+    navController: NavHostController, 
+    drawerState: DrawerState,
+    modifier: Modifier = Modifier
+) {
     // Correctly provide the NoteRepository from NoteApplication to the NoteViewModelFactory
     val noteViewModel: NoteViewModel = viewModel(
         factory = NoteViewModelFactory(app.noteRepository) // Changed to app.noteRepository
     )
     val authViewModel: AuthViewModel = viewModel() // Assuming AuthViewModel doesn't need a custom factory for now
 
-    NavHost(navController = navController, startDestination = Screen.LoginScreen.route) {
+    NavHost(
+        navController = navController, 
+        startDestination = Screen.LoginScreen.route,
+        modifier = modifier
+    ) {
         composable(Screen.LoginScreen.route) {
             LoginScreen {
                 navController.navigate(Screen.NoteListScreen.route) {

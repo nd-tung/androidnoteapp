@@ -1,7 +1,5 @@
 package com.example.simplenoteapp.ui.navigation
 
-package com.example.simplenoteapp.ui.navigation
-
 sealed class Screen(val route: String, val title: String) {
     object LoginScreen : Screen("login", "Login")
     object NoteListScreen : Screen("note_list", "Notes")

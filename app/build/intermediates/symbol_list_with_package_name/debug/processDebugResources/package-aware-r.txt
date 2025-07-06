@@ -249,6 +249,8 @@ mipmap ic_launcher
 mipmap ic_launcher_foreground
 mipmap ic_launcher_round
 raw firebase_common_keep
+string account_screen_title
+string add_note_description
 string android_credentials_TYPE_PASSWORD_CREDENTIAL
 string androidx_credentials_TYPE_PUBLIC_KEY_CREDENTIAL
 string androidx_startup
@@ -335,11 +337,14 @@ string indeterminate
 string m3c_bottom_sheet_pane_title
 string navigation_menu
 string not_selected
+string notes_screen_title
 string off
 string on
+string open_drawer_description
 string project_id
 string range_end
 string range_start
+string refresh_notes_description
 string search_bar_search
 string selected
 string snackbar_dismiss
@@ -348,6 +353,7 @@ string suggestions_available
 string switch_role
 string tab
 string template_percent
+string theme_settings_title
 string time_picker_am
 string time_picker_hour
 string time_picker_hour_24h_suffix

@@ -5,27 +5,14 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.*
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
-import com.example.simplenoteapp.data.Note
-import com.example.simplenoteapp.viewmodel.NoteUiState
-import com.example.simplenoteapp.viewmodel.NoteViewModel
-import java.text.SimpleDateFormat
-import java.util.*
-
-package com.example.simplenoteapp.ui.notelist
-
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.*
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.List
+import androidx.compose.material.icons.filled.Refresh
+import androidx.compose.material.icons.filled.Check
+import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.Send
+import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -63,7 +50,7 @@ fun NoteListScreen(
                             drawerState.open()
                         }
                     }) {
-                        Icon(Icons.Filled.Menu, contentDescription = stringResource(R.string.open_drawer_description))
+                        Icon(Icons.Default.MoreVert, contentDescription = "Menu")
                     }
                 },
                 actions = {
@@ -94,22 +81,26 @@ fun NoteListScreen(
                 is NoteUiState.Success -> {
                     if (state.data.isEmpty()) {
                         Column(
-                            modifier = Modifier.fillMaxSize(),
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .padding(32.dp), // Consistent padding
                             verticalArrangement = Arrangement.Center,
                             horizontalAlignment = Alignment.CenterHorizontally
                         ) {
                             Icon(
-                                imageVector = Icons.Filled.NoteAdd, // Changed to a more relevant icon
+                                imageVector = Icons.Default.Add,
                                 contentDescription = null,
-                                modifier = Modifier.size(120.dp),
-                                tint = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.3f)
+                                modifier = Modifier.size(80.dp), // Consistent icon size
+                                tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.4f) // Consistent color
                             )
-                            Spacer(modifier = Modifier.height(16.dp))
+                            Spacer(modifier = Modifier.height(24.dp)) // Consistent spacing
                             Text(
-                                text = "No notes yet.",
+                                text = "No notes yet",
                                 style = MaterialTheme.typography.headlineSmall,
-                                color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f)
+                                fontWeight = FontWeight.SemiBold, // Consistent font weight
+                                color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.8f) // Consistent primary text
                             )
+                            Spacer(modifier = Modifier.height(8.dp))
                             Text(
                                 text = "Tap the '+' button to add a new note.",
                                 style = MaterialTheme.typography.bodyLarge,
@@ -119,7 +110,7 @@ fun NoteListScreen(
                     } else {
                         LazyColumn(
                             modifier = Modifier.fillMaxSize(),
-                            contentPadding = PaddingValues(horizontal = 8.dp, vertical = 8.dp)
+                            contentPadding = PaddingValues(horizontal = 0.dp, vertical = 0.dp)
                         ) {
                             items(state.data, key = { note -> note.id }) { note ->
                                 NoteListItem(
@@ -138,7 +129,7 @@ fun NoteListScreen(
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         Icon(
-                            imageVector = Icons.Filled.ErrorOutline,
+                            imageVector = Icons.Default.Close,
                             contentDescription = null,
                             modifier = Modifier.size(64.dp),
                             tint = MaterialTheme.colorScheme.error
@@ -171,18 +162,26 @@ fun NoteListItem(
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(vertical = 4.dp) // Reduced vertical padding for tighter list
+            .padding(horizontal = 8.dp, vertical = 2.dp) // Reduced vertical padding
             .clickable { onNoteClick(note.id) },
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
-        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)
+        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp), // Slight elevation for depth
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.surface // Clean surface color for all notes
+        ),
+        border = when {
+            note.needsSync -> androidx.compose.foundation.BorderStroke(0.5.dp, MaterialTheme.colorScheme.error.copy(alpha = 0.2f))
+            note.isSynced -> androidx.compose.foundation.BorderStroke(0.5.dp, MaterialTheme.colorScheme.primary.copy(alpha = 0.2f))
+            else -> null // No border for regular notes
+        },
+        shape = MaterialTheme.shapes.medium // Consistent card shape
     ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(16.dp),
+                .padding(horizontal = 16.dp, vertical = 12.dp), // Consistent padding
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Column(modifier = Modifier.weight(1f).padding(end = 8.dp)) {
+            Column(modifier = Modifier.weight(1f)) {
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.SpaceBetween,
@@ -191,66 +190,75 @@ fun NoteListItem(
                     Text(
                         text = note.title.ifEmpty { "Untitled Note" },
                         style = MaterialTheme.typography.titleMedium,
-                        fontWeight = FontWeight.Bold,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                        fontWeight = FontWeight.SemiBold, // Consistent font weight
+                        color = MaterialTheme.colorScheme.onSurface, // Consistent primary text color
+                        modifier = Modifier.weight(1f).padding(end = 12.dp) // Consistent spacing
                     )
-                    // Sync status indicator
+                    // Single sync status indicator
                     Icon(
                         imageVector = when {
-                            note.needsSync -> Icons.Default.SyncProblem // More indicative icon
-                            note.isSynced -> Icons.Default.CloudDone // Clearer synced icon
-                            else -> Icons.Default.CloudOff // Clearer not synced icon
+                            note.needsSync -> Icons.Default.Refresh
+                            note.isSynced -> Icons.Default.Check
+                            else -> Icons.Default.Close
                         },
                         contentDescription = when {
                             note.needsSync -> "Needs Sync"
-                            note.isSynced -> "Note synced to cloud"
+                            note.isSynced -> "Synced to cloud"
                             else -> "Not Synced"
                         },
                         tint = when {
-                            note.needsSync -> MaterialTheme.colorScheme.error
-                            note.isSynced -> MaterialTheme.colorScheme.primary
-                            else -> MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.6f)
+                            note.needsSync -> MaterialTheme.colorScheme.error.copy(alpha = 0.8f) // Consistent error color
+                            note.isSynced -> MaterialTheme.colorScheme.primary.copy(alpha = 0.8f) // Consistent success color
+                            else -> MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.4f)
                         },
-                        modifier = Modifier.size(20.dp) // Slightly larger icon
+                        modifier = Modifier.size(18.dp) // Consistent icon size
                     )
                 }
-                Spacer(modifier = Modifier.height(4.dp))
+                Spacer(modifier = Modifier.height(6.dp)) // Consistent spacing
                 Text(
-                    text = SimpleDateFormat("MMM dd, yyyy HH:mm", Locale.getDefault()).format(Date(note.timestamp)),
+                    text = SimpleDateFormat("MMM dd, yyyy • HH:mm", Locale.getDefault()).format(Date(note.timestamp)), // Improved format
                     style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f)
+                    color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f) // Consistent secondary text color
                 )
                 if (note.content.isNotBlank()) {
-                    Spacer(modifier = Modifier.height(8.dp))
+                    Spacer(modifier = Modifier.height(8.dp)) // Consistent spacing
                     Text(
-                        text = note.content.take(120) + if (note.content.length > 120) "..." else "",
+                        text = note.content.take(100) + if (note.content.length > 100) "..." else "", // Shorter preview for consistency
                         style = MaterialTheme.typography.bodyMedium,
-                        maxLines = 3, // Allow more lines for preview
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                        maxLines = 2, // Consistent preview lines
+                        color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.8f), // Consistent content color
+                        lineHeight = MaterialTheme.typography.bodyMedium.lineHeight
                     )
                 }
             }
 
-            if (note.isChecklist) {
-                Icon(
-                    Icons.Filled.Checklist, // Using Checklist icon
-                    contentDescription = "Checklist note",
-                    tint = MaterialTheme.colorScheme.secondary,
-                    modifier = Modifier.padding(start = 8.dp) // Add some padding
-                )
-            }
-
-            // Quick sync menu
-            Box {
-                IconButton(
-                    onClick = { showSyncMenu = true },
-                    modifier = Modifier.size(48.dp) // Slightly larger touch target
-                ) {
+            // Icons row for checklist and menu
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(4.dp) // Consistent icon spacing
+            ) {
+                if (note.isChecklist) {
                     Icon(
-                        Icons.Default.MoreVert,
-                        contentDescription = "Note options",
-                        tint = MaterialTheme.colorScheme.onSurfaceVariant
+                        Icons.Default.List,
+                        contentDescription = "Checklist note",
+                        tint = MaterialTheme.colorScheme.primary.copy(alpha = 0.7f), // Consistent color scheme
+                        modifier = Modifier.size(18.dp) // Consistent icon size
                     )
+                }
+                
+                // Quick sync menu - more subtle
+                Box {
+                    IconButton(
+                        onClick = { showSyncMenu = true },
+                        modifier = Modifier.size(40.dp) // Consistent touch target
+                    ) {
+                        Icon(
+                            Icons.Default.MoreVert,
+                            contentDescription = "Note options",
+                            tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.6f),
+                            modifier = Modifier.size(20.dp)
+                        )
+                    }
                 }
 
                 DropdownMenu(
@@ -264,7 +272,7 @@ fun NoteListItem(
                             viewModel.syncNoteToCloud(note)
                         },
                         leadingIcon = {
-                            Icon(Icons.Default.CloudUpload, contentDescription = "Sync to cloud")
+                            Icon(Icons.Default.Send, contentDescription = null)
                         }
                     )
                     if (note.serverId != null) {
@@ -275,7 +283,7 @@ fun NoteListItem(
                                 viewModel.syncNoteFromCloud(note.serverId)
                             },
                             leadingIcon = {
-                                Icon(Icons.Default.CloudDownload, contentDescription = "Sync from cloud")
+                                Icon(Icons.Default.Info, contentDescription = null)
                             }
                         )
                     }

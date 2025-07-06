@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="account_screen_title">Account</string>
+    <string name="add_note_description">Add new note</string>
     <string name="app_name">SimpleNoteApp</string>
     <string name="gcm_defaultSenderId" translatable="false">512097755766</string>
     <string name="google_api_key" translatable="false">AIzaSyD5H4ARWXkAM18zNzoRpAkLiLZ6nd1JWGc</string>
     <string name="google_app_id" translatable="false">1:512097755766:android:1aabde27740d84e0f47557</string>
     <string name="google_crash_reporting_api_key" translatable="false">AIzaSyD5H4ARWXkAM18zNzoRpAkLiLZ6nd1JWGc</string>
     <string name="google_storage_bucket" translatable="false">take-note-8c593.firebasestorage.app</string>
+    <string name="notes_screen_title">Notes</string>
+    <string name="open_drawer_description">Open navigation drawer</string>
     <string name="project_id" translatable="false">take-note-8c593</string>
+    <string name="refresh_notes_description">Refresh notes</string>
+    <string name="theme_settings_title">Theme Settings</string>
     <style name="Theme.SimpleNoteApp" parent="android:Theme.Material.Light.NoActionBar"/>
 </resources>

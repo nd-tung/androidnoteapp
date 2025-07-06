@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<incidents format="6" by="lint 8.11.0" type="partial_results">
+    <map id="UnusedResources">
+        <entry
+            name="model"
+            string="string[app_name(R),open_drawer_description(R),notes_screen_title(R),account_screen_title(R),theme_settings_title(R)];;;;"/>
+    </map>
+
+</incidents>

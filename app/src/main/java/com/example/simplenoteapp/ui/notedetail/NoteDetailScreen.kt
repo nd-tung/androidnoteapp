@@ -12,8 +12,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.simplenoteapp.R
 import com.example.simplenoteapp.data.Note
@@ -99,23 +101,15 @@ fun NoteDetailScreen(
             TopAppBar(
                 title = { Text(if (isNewNote) "Add New Note" else "Edit Note") },
                 navigationIcon = {
-                    IconButton(onClick = {
-                        coroutineScope.launch {
-                            if (drawerState.isOpen) drawerState.close() else drawerState.open()
-                        }
-                    }) {
-                        Icon(Icons.Filled.Menu, contentDescription = stringResource(R.string.open_drawer_description))
-                    }
-                },
-                actions = {
-                    // Back arrow for navigation - it's useful to have it here regardless of drawer state for quick back navigation
                     IconButton(onClick = onNavigateUp) {
                         Icon(Icons.Default.ArrowBack, contentDescription = "Back to notes list")
                     }
+                },
+                actions = {
                     if (!isNewNote && currentNoteId != null) {
                         Box {
                             IconButton(onClick = { showSyncMenu = true }) {
-                                Icon(Icons.Default.MoreVert, contentDescription = "More options")
+                                Icon(Icons.Default.MoreVert, contentDescription = "Sync options")
                             }
                             DropdownMenu(
                                 expanded = showSyncMenu,
@@ -130,7 +124,7 @@ fun NoteDetailScreen(
                                         }
                                     },
                                     leadingIcon = {
-                                        Icon(Icons.Default.CloudUpload, contentDescription = "Sync to cloud")
+                                        Icon(Icons.Default.Send, contentDescription = null)
                                     }
                                 )
                                 val currentNote = (selectedNoteState as? NoteUiState.Success<Note?>)?.data
@@ -139,12 +133,12 @@ fun NoteDetailScreen(
                                         text = { Text("Sync from Cloud") },
                                         onClick = {
                                             showSyncMenu = false
-                                            currentNote.serverId?.let { serverId ->
+                                            currentNote.serverId.let { serverId ->
                                                 viewModel.syncNoteFromCloud(serverId)
                                             }
                                         },
                                         leadingIcon = {
-                                            Icon(Icons.Default.CloudDownload, contentDescription = "Sync from cloud")
+                                            Icon(Icons.Default.Info, contentDescription = null)
                                         }
                                     )
                                 }
@@ -250,38 +244,55 @@ fun NoteEditorContent(
     Column(
         modifier = modifier
             .fillMaxSize()
-            .padding(16.dp)
+            .padding(horizontal = 16.dp, vertical = 16.dp) // Consistent padding
     ) {
-        note?.let { currentNote ->
-            if (currentNote.serverId != null) {
-                SyncStatusCard(note = currentNote)
-                Spacer(modifier = Modifier.height(12.dp))
-            }
-        }
-
         OutlinedTextField(
             value = title,
             onValueChange = onTitleChange,
-            label = { Text("Title") },
+            label = { 
+                Text(
+                    "Title",
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                ) 
+            },
             modifier = Modifier.fillMaxWidth(),
-            textStyle = MaterialTheme.typography.titleLarge,
+            textStyle = MaterialTheme.typography.titleMedium.copy(
+                fontWeight = FontWeight.SemiBold,
+                color = MaterialTheme.colorScheme.onSurface
+            ), // Consistent text styling
             singleLine = true,
+            colors = OutlinedTextFieldDefaults.colors(
+                focusedBorderColor = MaterialTheme.colorScheme.primary,
+                unfocusedBorderColor = MaterialTheme.colorScheme.outline.copy(alpha = 0.5f)
+            ),
             keyboardOptions = KeyboardOptions(imeAction = ImeAction.Next, capitalization = KeyboardCapitalization.Sentences)
         )
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(20.dp)) // Consistent spacing
 
         Row(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(vertical = 8.dp), // Consistent padding
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            Text("Is Checklist?", style = MaterialTheme.typography.bodyLarge)
+            Text(
+                "Checklist mode",
+                style = MaterialTheme.typography.titleSmall,
+                fontWeight = FontWeight.SemiBold,
+                color = MaterialTheme.colorScheme.onSurface
+            ) // Consistent text styling
             Switch(
                 checked = isChecklist,
-                onCheckedChange = onIsChecklistChange
+                onCheckedChange = onIsChecklistChange,
+                colors = SwitchDefaults.colors(
+                    checkedThumbColor = MaterialTheme.colorScheme.primary,
+                    checkedTrackColor = MaterialTheme.colorScheme.primaryContainer
+                )
             )
         }
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(20.dp)) // Consistent spacing
 
         if (isChecklist) {
             LazyColumn(modifier = Modifier.weight(1f)) {
@@ -328,11 +339,24 @@ fun NoteEditorContent(
             OutlinedTextField(
                 value = content,
                 onValueChange = onContentChange,
-                label = { Text("Content") },
+                label = { 
+                    Text(
+                        "Write your note...",
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    ) 
+                },
                 modifier = Modifier
                     .fillMaxWidth()
                     .weight(1f),
-                textStyle = MaterialTheme.typography.bodyLarge,
+                textStyle = MaterialTheme.typography.bodyLarge.copy(
+                    color = MaterialTheme.colorScheme.onSurface,
+                    lineHeight = MaterialTheme.typography.bodyLarge.lineHeight * 1.2f
+                ), // Consistent text styling with better line height
+                colors = OutlinedTextFieldDefaults.colors(
+                    focusedBorderColor = MaterialTheme.colorScheme.primary,
+                    unfocusedBorderColor = MaterialTheme.colorScheme.outline.copy(alpha = 0.5f)
+                ),
                 keyboardOptions = KeyboardOptions.Default.copy(capitalization = KeyboardCapitalization.Sentences)
             )
         }
@@ -364,71 +388,8 @@ fun ChecklistItemEditor(
             placeholder = { Text("List item") }
         )
         IconButton(onClick = onDeleteItem) {
-            Icon(Icons.Filled.DeleteOutline, contentDescription = "Delete checklist item") // Changed to DeleteOutline
+            Icon(Icons.Filled.Delete, contentDescription = "Delete checklist item")
         }
     }
 }
 
-@Composable
-fun SyncStatusCard(note: Note) {
-    Card(
-        modifier = Modifier.fillMaxWidth(),
-        elevation = CardDefaults.cardElevation(defaultElevation = 1.dp), // Subtle elevation
-        colors = CardDefaults.cardColors(
-            containerColor = when {
-                note.needsSync -> MaterialTheme.colorScheme.errorContainer.copy(alpha = 0.3f) // Softer error
-                note.isSynced -> MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.3f) // Softer success
-                else -> MaterialTheme.colorScheme.secondaryContainer.copy(alpha = 0.3f) // Neutral for not synced
-            }
-        )
-    ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 12.dp, vertical = 8.dp), // Adjusted padding
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween
-        ) {
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Icon(
-                    imageVector = when {
-                        note.needsSync -> Icons.Default.SyncProblem
-                        note.isSynced -> Icons.Default.CloudDone
-                        else -> Icons.Default.CloudOff
-                    },
-                    contentDescription = "Sync Status: " + when {
-                        note.needsSync -> "Changes pending sync"
-                        note.isSynced -> "Synced with cloud"
-                        else -> "Not synced"
-                    },
-                    tint = when {
-                        note.needsSync -> MaterialTheme.colorScheme.error // Keep strong color for icon
-                        note.isSynced -> MaterialTheme.colorScheme.primary
-                        else -> MaterialTheme.colorScheme.onSecondaryContainer
-                    }
-                )
-                Spacer(modifier = Modifier.width(8.dp))
-                Text(
-                    text = when {
-                        note.needsSync -> "Changes pending sync"
-                        note.isSynced -> "Synced with cloud"
-                        else -> "Not synced"
-                    },
-                    style = MaterialTheme.typography.labelLarge, // Slightly larger for emphasis
-                    color = when {
-                        note.needsSync -> MaterialTheme.colorScheme.onErrorContainer
-                        note.isSynced -> MaterialTheme.colorScheme.onPrimaryContainer
-                        else -> MaterialTheme.colorScheme.onSecondaryContainer
-                    }
-                )
-            }
-            if (note.lastSyncTime > 0) {
-                Text(
-                    text = "Last: ${SimpleDateFormat("dd MMM, HH:mm", Locale.getDefault()).format(Date(note.lastSyncTime))}",
-                    style = MaterialTheme.typography.labelSmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant // More neutral color for timestamp
-                )
-            }
-        }
-    }
-}

@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
@@ -47,9 +48,13 @@ class MainActivity : ComponentActivity() {
                 ) {
                     Scaffold(
                         modifier = Modifier.fillMaxSize(),
-                    ) { paddingValues -> // contentPadding parameter is required for Scaffold
-                        // Pass paddingValues to NavGraph if it needs to handle insets, otherwise it can be ignored
-                        NavGraph(app = application as NoteApplication, navController = navController, drawerState = drawerState)
+                    ) { paddingValues ->
+                        NavGraph(
+                            app = application as NoteApplication, 
+                            navController = navController, 
+                            drawerState = drawerState,
+                            modifier = Modifier.padding(paddingValues)
+                        )
                     }
                 }
             }
