@@ -119,8 +119,12 @@ class NoteRepository(
             // Use the new single note endpoint for efficiency
             val cloudNote = noteApiService.getNoteById(serverId)
             return if (cloudNote != null) {
+                // Find existing local note by server ID so we can preserve its local database ID
+                val localNote = noteDao.getNoteByServerId(serverId)
+
                 // Update local note with cloud data
                 val syncedNote = cloudNote.copy(
+                    id = localNote?.id ?: cloudNote.id,
                     isSynced = true,
                     needsSync = false,
                     lastSyncTime = System.currentTimeMillis()

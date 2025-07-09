@@ -22,4 +22,7 @@ interface NoteDao {
 
     @Query("DELETE FROM notes WHERE id = :id")
     suspend fun deleteNoteById(id: Long) // Added for convenience
-}
+
+    // Fetch a note by its server ID. Useful when syncing data from the backend
+    @Query("SELECT * FROM notes WHERE serverId = :serverId LIMIT 1")
+    suspend fun getNoteByServerId(serverId: Long): Note?}
